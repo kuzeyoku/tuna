@@ -4,11 +4,7 @@ namespace App\Services\Admin;
 
 use App\Models\Setting;
 use App\Enums\ModuleEnum;
-// use App\Enums\SettingCategoryEnum;
-// use claviska\SimpleImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-// use Illuminate\Support\Facades\Storage;
 
 class SettingService
 {
@@ -33,13 +29,8 @@ class SettingService
                     'value' => $value
                 ];
             })->toArray();
-
-        if (Setting::upsert($settings, ['key', 'category'], ['value'])) {
-            Cache::forget("setting");
-            return true;
-        } else {
-            return false;
-        }
+        cache()->forget('setting');
+        return Setting::upsert($settings, ['key', 'category'], ['value']);
     }
 
     public static function getSitemapModuleList()
@@ -50,7 +41,6 @@ class SettingService
         if (ModuleEnum::Service->status()) array_push($response, "service", "service_category", "service_detail");
         if (ModuleEnum::Product->status()) array_push($response, "product", "product_category", "product_detail");
         if (ModuleEnum::Project->status()) array_push($response, "project", "project_category", "project_detail");
-        if (ModuleEnum::Education->status()) array_push($response, "education", "education_category", "education_detail");
         return $response;
     }
 

@@ -26,7 +26,7 @@ class StoreSliderRequest extends FormRequest
             "description.*" => "",
             "order" => "required|numeric|min:0",
             "status" => "",
-            "image" => "required|image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
+            "image" => config("setting.general.slider_type", "image") == "image" ? "required|image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096) : "",
             "button" => "",
             "video" => "",
         ];

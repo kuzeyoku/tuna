@@ -1,7 +1,8 @@
 @extends('layout.main')
 @section('content')
-    @include('layout.slider')
-
+    @if ($slider->count() > 0)
+        @include('layout.slider')
+    @endif
     <div class="site-main">
 
         @include('layout.about')
