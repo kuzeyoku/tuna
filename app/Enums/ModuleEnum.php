@@ -11,7 +11,6 @@ enum ModuleEnum: string
     case Blog = "blog";
     case Category = "category";
     case Service = "service";
-    case Education = "education";
     case Brand = "brand";
     case Reference = "reference";
     case Product = "product";
@@ -32,7 +31,6 @@ enum ModuleEnum: string
             self::Blog => true,
             self::Category => true,
             self::Service => true,
-            self::Education => true,
             self::Brand => true,
             self::Reference => true,
             self::Product => true,
@@ -64,7 +62,6 @@ enum ModuleEnum: string
             self::Blog => "fas-blog",
             self::Category => "fas-list-ul",
             self::Service => "fas-tools",
-            self::Education => "fas-graduation-cap",
             self::Brand => "fas-tags",
             self::Reference => "fas-clipboard-list",
             self::Product => "fas-shopping-cart",
@@ -86,7 +83,6 @@ enum ModuleEnum: string
             self::Blog => "blog",
             self::Category => "category",
             self::Service => "service",
-            self::Education => "education",
             self::Brand => "brand",
             self::Reference => "reference",
             self::Product => "product",
@@ -108,7 +104,6 @@ enum ModuleEnum: string
             self::Blog => "blog",
             self::Category => "category",
             self::Service => "service",
-            self::Education => "education",
             self::Brand => "brand",
             self::Reference => "reference",
             self::Product => "product",
@@ -130,7 +125,6 @@ enum ModuleEnum: string
             self::Blog => \App\Http\Controllers\Admin\BlogController::class,
             self::Category => \App\Http\Controllers\Admin\CategoryController::class,
             self::Service => \App\Http\Controllers\Admin\ServiceController::class,
-            self::Education => \App\Http\Controllers\Admin\EducationController::class,
             self::Brand => \App\Http\Controllers\Admin\BrandController::class,
             self::Reference => \App\Http\Controllers\Admin\ReferenceController::class,
             self::Product => \App\Http\Controllers\Admin\ProductController::class,
@@ -152,7 +146,6 @@ enum ModuleEnum: string
             self::Blog => \App\Models\Blog::class,
             self::Category => \App\Models\Category::class,
             self::Service => \App\Models\Service::class,
-            self::Education => \App\Models\Education::class,
             self::Brand => \App\Models\Brand::class,
             self::Reference => \App\Models\Reference::class,
             self::Product => \App\Models\Product::class,
@@ -198,10 +191,6 @@ enum ModuleEnum: string
                 "create" => __("admin/$this->value.create"),
                 "index" => __("admin/$this->value.list"),
             ],
-            self::Education => [
-                "create" => __("admin/$this->value.create"),
-                "index" => __("admin/$this->value.list"),
-            ],
             self::Brand => [
                 "create" => __("admin/$this->value.create"),
                 "index" => __("admin/$this->value.list"),
@@ -238,7 +227,6 @@ enum ModuleEnum: string
         return [
             self::Blog->value => self::Blog->title(),
             self::Service->value => self::Service->title(),
-            self::Education->value => self::Education->title(),
             self::Product->value => self::Product->title(),
             self::Project->value => self::Project->title(),
         ];
@@ -254,7 +242,6 @@ enum ModuleEnum: string
             self::Product => ["image" => ["width" => 1080, "height" => 720]],
             self::Project => ["image" => ["width" => 1920, "height" => 1080]],
             self::Slider => ["image" => ["width" => 1920, "height" => 1080]],
-            self::Education => ["image" => ["width" => 1920, "height" => 1080]],
             self::Testimonial => ["image" => ["width" => 300, "height" => 300]],
             self::Popup => ["image" => ["width" => 800, "height" => 600]],
         };
