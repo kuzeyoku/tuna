@@ -39,7 +39,7 @@
 
                         <rs-layer id="slider-1-slide-4-layer-2" data-type="text" data-rsp_ch="on"
                             data-xy="x:c,c,c,c;xo:5px,5px,0,0;yo:250px,273px,74px,84px;"
-                            data-text="w:normal;s:94,94,58,30;l:116,116,80,60;fw:400;" data-frame_0="y:-100%;"
+                            data-text="w:normal;s:50,50,58,30;l:116,116,80,60;fw:400;" data-frame_0="y:-100%;"
                             data-frame_0_mask="u:t;" data-frame_1="st:310;sp:1200;sR:310;" data-frame_1_mask="u:t;"
                             data-frame_999="o:0;st:w;sR:7490;"
                             style="z-index:7;font-family:'Krona One', sans-serif;">{{ $slider->getDescription() }}

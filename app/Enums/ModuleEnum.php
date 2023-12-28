@@ -239,7 +239,7 @@ enum ModuleEnum: string
             self::Service => ["image" => ["width" => 1080, "height" => 720]],
             self::Brand => ["image" => ["width" => 150, "height" => 150]],
             self::Reference => ["image" => ["width" => 400, "height" => 400]],
-            self::Product => ["image" => ["width" => 1080, "height" => 720]],
+            self::Product => ["image" => ["width" => 1080, "height" => 400]],
             self::Project => ["image" => ["width" => 1920, "height" => 1080]],
             self::Slider => ["image" => ["width" => 1920, "height" => 1080]],
             self::Testimonial => ["image" => ["width" => 300, "height" => 300]],

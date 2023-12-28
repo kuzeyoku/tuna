@@ -27,7 +27,21 @@ class ContactRequest extends FormRequest
             "email" => "required|email:filter",
             "subject" => "required|string|min:3|max:50",
             "message" => "required|string|min:3|max:500",
+            "terms" => "required|accepted",
             "g-recaptcha-response" => "",
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            "name" => __("front/contact.form_name"),
+            "phone" => __("front/contact.form_phone"),
+            "email" => __("front/contact.form_email"),
+            "subject" => __("front/contact.form_subject"),
+            "message" => __("front/contact.form_message"),
+            "terms" => __("front/contact.form_terms"),
+            "g-recaptcha-response" => __("front/contact.form_recaptcha"),
         ];
     }
 }

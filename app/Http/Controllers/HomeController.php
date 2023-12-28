@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Slider;
+use App\Models\Product;
 use App\Models\Project;
 use App\Models\Service;
 use App\Enums\ModuleEnum;
 use App\Models\Reference;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -20,6 +20,7 @@ class HomeController extends Controller
     {
         $modules = [ //Eklenecek modülün module enumdaki değerini ve modelini buraya ekleyin.
             ModuleEnum::Slider->value => Slider::class,
+            ModuleEnum::Product->value => Product::class,
             ModuleEnum::Service->value => Service::class,
             ModuleEnum::Brand->value => Brand::class,
             ModuleEnum::Project->value => Project::class,
