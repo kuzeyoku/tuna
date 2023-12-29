@@ -11,8 +11,8 @@
                             </div>
                             <div class="layer-content">
                                 <div class="pb-45">
-                                    <img class="img-fluid" width="82" height="77" src="images/icon-01.png"
-                                        alt="image">
+                                    <img class="img-fluid" width="82" height="77"
+                                        src="{{ asset('assets/images/icon-01.png') }}" alt="image">
                                 </div>
                                 <!-- section title -->
                                 <div class="section-title">

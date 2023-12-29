@@ -13,7 +13,7 @@
 
         @include('layout.broken')
 
-        @include('layout.testimonial')
+        {{-- @include('layout.testimonial') --}}
 
         @include('layout.reference')
 
