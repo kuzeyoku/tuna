@@ -38,36 +38,6 @@
                         </div><!-- col-img-bg-img-two end-->
                         <img class="img-fluid prt-equal-height-image w-100" src="images/bg-image/col-bgimage-2.jpg"
                             alt="bg-image">
-                        <!-- prt-marquebox -->
-                        <div class="prt-marquebox-main">
-                            <div class="prt-marquebox-wrapper">
-                                <div class="col-100">
-                                    <div class="">
-                                        <div class="prt-marqueboxes-wrapper prt-marquebox-style1">
-                                            <ul class="icon-list-items marquebox-list">
-                                                <li class="icon-list-item">
-                                                    <span class="marque-text">Automotive
-                                                        Manufacturing</span>
-                                                </li>
-                                                <li class="icon-list-item">
-                                                    <span class="marque-text">Chemical Research</span>
-                                                </li>
-                                                <li class="icon-list-item">
-                                                    <span class="marque-text">Heavy Equipment</span>
-                                                </li>
-                                                <li class="icon-list-item">
-                                                    <span class="marque-text">Chemical Research</span>
-                                                </li>
-                                                <li class="icon-list-item">
-                                                    <span class="marque-text">Heavy Equipment</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- prt-marquebox end -->
                     </div>
                 </div><!-- row end -->
             </div>

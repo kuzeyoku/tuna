@@ -30,6 +30,10 @@ class BlogController extends Controller
 
         if (config("setting.caching.status", false)) {
             $data = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($pagination) {
+                $posts = Blog::active()->order()->paginate($pagination);
+                $posts->links();
+                $posts->appends(["start" => 1, "end" => 5]);
+
                 return [
                     "posts" => Blog::active()->order()->paginate($pagination),
                     "popularPost" => Blog::active()->viewOrder()->take(5)->get(),

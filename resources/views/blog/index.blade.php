@@ -2,147 +2,82 @@
 @section('title', __('front/blog.page_title'))
 @section('content')
     @include('layout.breadcrumb')
-    <div class="blog-area full-blog right-sidebar full-blog default-padding">
-        <div class="container">
-            <div class="blog-items">
+    <div class="site-main bg-white">
+        <div id="sidebar" class="prt-row sidebar prt-sidebar-right clearfix">
+            <div class="container">
                 <div class="row">
-                    <div class="blog-content col-lg-8 col-md-12">
-                        <div class="blog-item-box">
-                            @foreach ($posts as $post)
-                                <div class="single-item">
-                                    <div class="item wow fadeInUp">
-                                        <div class="thumb">
-                                            <img src="{{ $post->getImageUrl() }}" alt="{{ $post->getTitle() }}">
-                                        </div>
-                                        <div class="info">
-                                            <div class="meta">
-                                                <ul>
-                                                    <li>@svg('fas-calendar-alt')
-                                                        {{ $post->getCreatedDate() }}
-                                                    </li>
-                                                    <li>@svg('fas-eye') {{ $post->view_count }}
-                                                        {{ __('front/blog.view') }}
-                                                    </li>
-                                                    <li>@svg('fas-list-ul') {{ $post->getCategoryTitle() }}</li>
-                                                </ul>
-                                            </div>
-                                            <h3>
-                                                <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
-                                            </h3>
-                                            <p>
-                                                {!! Str::limit(strip_tags($post->getDescription()), 160) !!}
-                                            </p>
-                                            <div class="bottom">
-                                                <span class="font-weight-bold">
-                                                    <img src="{{ asset('assets/img/teams/1.jpg') }}">
-                                                    {{ $post->user->name }}
-                                                </span>
-                                                <a class="btn circle btn-theme effect btn-md" href="{{ $post->getUrl() }}">
-                                                    {{ __('front/blog.read_more') }}</a>
-                                            </div>
+                    <div class="col-lg-8 content-area">
+                        @foreach ($posts as $post)
+                            <article class="post prt-blog-classic clearfix">
+                                <div class="prt-post-featured-wrapper prt-featured-wrapper">
+                                    <div class="prt-post-featured">
+                                        <img width="350" height="240" class="img-fluid" src="{{ $post->getImageUrl() }}"
+                                            alt="blog-img">
+                                    </div>
+                                </div>
+                                <div class="prt-blog-classic-content">
+                                    <div class="prt-post-entry-header">
+                                        <header class="entry-header">
+                                            <span class="blog-featured-tag">{{ $post->getCategoryTitle() }}</span>
+                                            <h2 class="entry-title"><a
+                                                    href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
+                                            </h2>
+                                            <p>{{ $post->getShortDescription() }}</p>
+                                        </header>
+                                    </div>
+                                    <div class="entry-content">
+                                        <div class="prt-blogbox-footer-readmore">
+                                            <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
+                                                href="{{ $post->getUrl() }}">Detaylar</a>
+                                            <span class="prt-meta-line date-link"><time class="entry-date published"
+                                                    datetime="{{ $post->updated_at }}">{{ $post->updated_at->translatedFormat('d M Y') }}</time></span>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                        {{ $posts->render('pagination::default') }}
+                            </article>
+                        @endforeach
+                        {{ $posts->render('pagination::custom') }}
                     </div>
-                    <div class="sidebar wow fadeInLeft col-lg-4 col-md-12">
-                        <aside>
-                            {{-- <div class="sidebar-item search">
-                                    <div class="sidebar-info">
-                                        <form>
-                                            <input type="text" name="text" class="form-control">
-                                            <button type="submit"><i class="fas fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                </div> --}}
-                            <div class="sidebar-item recent-post">
-                                <div class="title">
-                                    <h4>{{ __('front/blog.popular_post') }}</h4>
-                                </div>
-                                <ul>
-                                    @foreach ($popularPost as $post)
-                                        <li>
-                                            <div class="thumb">
-                                                <a href="{{ $post->getUrl() }}">
-                                                    <img src="{{ $post->getImageUrl() }}" alt="{{ $post->getTitle() }}">
-                                                </a>
-                                            </div>
-                                            <div class="info">
-                                                <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
-                                                <div class="meta-title">
-                                                    <span class="post-date">@svg('fas-calendar-alt')</i>
-                                                        {{ $post->getCreatedDate() }}</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="sidebar-item category">
-                                <div class="title">
-                                    <h4>{{ __('front/blog.categories') }}</h4>
-                                </div>
-                                <div class="sidebar-info">
+                    <div class="col-lg-4 widget-area sidebar-right prt-sticky-column">
+                        <div>
+                            <aside class="widget widget-search with-title">
+                                <div class="widget-categories">
+                                    <h3 class="widget-title">Kategoriler</h3>
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li>
-                                                <a href="">{{ $category->getTitle() }}
-                                                    <span>({{ $category->countBlogs() }})</span></a>
+                                            <li><a
+                                                    href="{{ $category->getUrl(\App\Enums\ModuleEnum::Blog) }}">{{ $category->getTitle() }}</a><span>{{ $category->countBlogs() }}</span>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="sidebar-item social-sidebar">
-                                <div class="title">
-                                    <h4>{{ __('front/blog.follow_us') }}</h4>
-                                </div>
-                                <div class="sidebar-info">
-                                    <ul>
-                                        @if (config('setting.social.facebook'))
-                                            <li class="facebook">
-                                                <a href="{{ config('setting.social.facebook') }}">
-                                                    @svg('fab-facebook')
-                                                </a>
+                                <div class="widget-recent-post">
+                                    <h3 class="widget-title">Popüler Konular</h3>
+                                    <ul class="widget-post prt-recent-post-list">
+                                        @foreach ($popularPost as $post)
+                                            <li>
+                                                <div class="post-detail">
+                                                    <span class="post-tag">{{ $post->getCategoryTitle() }}</span>
+                                                    <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
+                                                </div>
                                             </li>
-                                        @endif
-                                        @if (config('setting.social.twitter'))
-                                            <li class="twitter">
-                                                <a href="{{ config('setting.social.twitter') }}">
-                                                    @svg('fab-twitter')
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (config('setting.social.instagram'))
-                                            <li class="instagram">
-                                                <a href="{{ config('setting.social.instagram') }}">
-                                                    @svg('fab-instagram')
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (config('setting.social.linkedin'))
-                                            <li class="linkedin">
-                                                <a href="{{ config('setting.social.linkedin') }}">
-                                                    @svg('fab-linkedin')
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (config('setting.social.youtube'))
-                                            <li class="youtube">
-                                                <a href="{{ config('setting.social.youtube') }}">
-                                                    @svg('fab-youtube')
-                                                </a>
-                                            </li>
-                                        @endif
+                                        @endforeach
                                     </ul>
                                 </div>
-                            </div>
-                        </aside>
+                                <div class="tagcloud-widget">
+                                    <h3 class="widget-title">Tags</h3>
+                                    <div class="tagcloud">
+                                        @foreach (\App\Models\Blog::uniqueTags() as $tag)
+                                            <a class="tag-cloud-link">{{ $tag }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
-                </div>
+                </div><!-- row end -->
             </div>
         </div>
-    </div>
+
+    </div><!--site-main end-->
 @endsection

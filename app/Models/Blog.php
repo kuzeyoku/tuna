@@ -82,6 +82,13 @@ class Blog extends Model
         return null;
     }
 
+    public function getShortDescription(int $length = 100)
+    {
+        if (array_key_exists($this->locale, $this->description))
+            return mb_substr(strip_tags($this->description[$this->locale]), 0, $length) . "...";
+        return null;
+    }
+
     public function getDescription()
     {
         if (array_key_exists($this->locale, $this->description))
@@ -94,6 +101,17 @@ class Blog extends Model
         if (array_key_exists($this->locale, $this->tags))
             return explode(",", $this->tags[$this->locale]);
         return [];
+    }
+
+    public static function uniqueTags()
+    {
+        $tags = BlogTranslate::pluck("tags")->toArray();
+        $tags = array_map(function ($item) {
+            return explode(",", $item);
+        }, $tags);
+        $tags = array_merge(...$tags);
+        $tags = array_unique($tags);
+        return array_slice($tags, 0, 10);
     }
 
     public function getUrl()

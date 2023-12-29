@@ -25,6 +25,7 @@ Route::middleware("checkInstallation")->group(function () {
 
     Route::get("/blog", [App\Http\Controllers\BlogController::class, "index"])->name("blog.index");
     Route::get("/blog/{post}/{slug}", [App\Http\Controllers\BlogController::class, "show"])->name("blog.show");
+    Route::get("/blog/category/{category}/{slug}", [App\Http\Controllers\BlogController::class, "category"])->name("blog.category");
 
     Route::controller(App\Http\Controllers\ServiceController::class)->prefix("service")->group(function () {
         Route::get("/", "index")->name("service.index");
