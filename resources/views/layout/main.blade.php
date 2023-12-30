@@ -4,13 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Minemo - Mining & Minerals Business HTML Template">
-    <meta name="keywords"
-        content="Minemo - Mining & Minerals Business WordPress Theme, Minemo - Mining & Minerals Business Html Template, themes & template, html5 template, WordPress theme, unlimited colors available, ui/ux,ui/ux design, best html template, html template, html, JavaScript, best css theme,css3, elementor theme, latest premium themes 2023, latest premium templates 2023, preyan technosys Pvt.Ltd,cymol themes, themetech mount,Web 3.0,multi-theme, website theme and template, woocommerce, bootstrap template, web templates, responsive theme,services,web design and development, business, company, bitcoinmining, mining, mining life, mining engineering, coal mining, mining town, gold mining, mining heritage, mining history, mineral mining, mining industry, construction, quarry mining, machine">
-    <meta name="author" content="https://www.preyantechnosys.com/">
+    <title>@yield('title', config('setting.general.title'))</title>
+    <meta name="description" content="{{ config('setting.general.description') }}">
+    <meta name="keywords" content="{{ config('setting.general.keywords') }}">
+    <meta name="author" content="{{ env('APP_NAME') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('setting.general.title') }}</title>
 
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -61,9 +59,7 @@
     <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
-    <!-- Revolution Slider -->
     @yield('script')
-    <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
     @include('layout.alert')
     <script>

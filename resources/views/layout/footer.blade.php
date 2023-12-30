@@ -111,14 +111,22 @@
                 <div class="col-lg-12">
                     <div class="cpy-text">
                         <ul class="footer-nav-menu">
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Procurement</a></li>
+                            @if ($terms)
+                                <li><a href="{{ $terms->getUrl() }}">{{ $terms->getTitle() }}</a></li>
+                            @endif
+                            @if ($cookie)
+                                <li><a href="{{ $cookie->getUrl() }}">{{ $cookie->getTitle() }}</a></li>
+                            @endif
+                            @if ($privacy)
+                                <li><a href="{{ $privacy->getUrl() }}">{{ $privacy->getTitle() }}</a></li>
+                            @endif
+                            @if ($kvkk)
+                                <li><a href="{{ $kvkk->getUrl() }}">{{ $kvkk->getTitle() }}</a></li>
+                            @endif
                         </ul>
                         <p>Copyright © 2023 <a href="{{ route('home') }}">{{ config('setting.general.title') }}</a>.
                             Designed By
-                            <a href="">{{ ENV('APP_NAME') }}</a>
+                            <a href="">{{ env('APP_NAME') }}</a>
                         </p>
                     </div>
                 </div>

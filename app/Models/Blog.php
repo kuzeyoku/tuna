@@ -22,8 +22,6 @@ class Blog extends Model
 
     protected $locale;
 
-    protected $with = ["category", "translate", "user"];
-
     public function __construct()
     {
         parent::__construct();
@@ -99,7 +97,9 @@ class Blog extends Model
     public function getTags()
     {
         if (array_key_exists($this->locale, $this->tags))
-            return explode(",", $this->tags[$this->locale]);
+            return array_map(function ($item) {
+                return trim($item);
+            }, explode(",", $this->tags[$this->locale]));
         return [];
     }
 

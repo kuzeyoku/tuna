@@ -62,6 +62,8 @@ class BlogController extends Controller
                     "post" => $post,
                     "previousPost" => Blog::active()->order()->where("id", "<", $post->id)->first(),
                     "nextPost" => Blog::active()->order()->where("id", ">", $post->id)->first(),
+                    "popularPost" => Blog::active()->viewOrder()->take(5)->get(),
+                    "categories" => Category::active()->whereModule(ModuleEnum::Blog->value)->get(),
                 ];
             });
         } else {
@@ -69,6 +71,8 @@ class BlogController extends Controller
                 "post" => $post,
                 "previousPost" => Blog::active()->order()->where("id", "<", $post->id)->first(),
                 "nextPost" => Blog::active()->order()->where("id", ">", $post->id)->first(),
+                "popularPost" => Blog::active()->viewOrder()->take(5)->get(),
+                "categories" => Category::active()->whereModule(ModuleEnum::Blog->value)->get(),
             ];
         }
         return view("$this->folder.show", $data);
