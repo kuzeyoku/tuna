@@ -62,10 +62,10 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <!-- Revolution Slider -->
-    <script src="{{ asset('assets/revolution/js/revolution.tools.min.js') }}"></script>
-    <script src="{{ asset('assets/revolution/js/rs6.min.js') }}"></script>
-    <script src="{{ asset('assets/revolution/js/slider.js') }}"></script>
+    @yield('script')
     <script src="{{ asset('assets/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
+    @include('layout.alert')
     <script>
         AOS.init({
             offset: 120,

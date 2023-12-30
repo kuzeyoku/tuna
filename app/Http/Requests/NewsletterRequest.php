@@ -23,7 +23,17 @@ class NewsletterRequest extends FormRequest
     {
         return [
             "email" => "required|email|unique:newsletters,email",
+            "terms" => "required",
             "g-recapcha-response" => ""
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            "email" => __("front/contact.form_email"),
+            "terms" => __("front/contact.form_terms"),
+            "g-recapcha-response" => __("front/contact.form_recaptcha")
         ];
     }
 }

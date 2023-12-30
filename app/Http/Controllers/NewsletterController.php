@@ -15,12 +15,14 @@ class NewsletterController extends Controller
                 ->withInput()
                 ->withError(__("front/contact.recaptcha_error"));
         }
-
-        Newsletter::create([
-            "email" => $request->email
-        ]);
-
-        return redirect()->back()->with("success", __("front/contact.newsletter_success"));
+        try {
+            Newsletter::create($request->validated());
+            return back()
+                ->withSuccess(__("front/contact.newsletter_success"));
+        } catch (\Exception $e) {
+            return back()
+                ->withError(__("front/contact.newsletter_error"));
+        }
     }
 
     private function recaptcha($request)

@@ -11,15 +11,20 @@
 
         @include('layout.counter')
 
-        @include('layout.broken')
-
-        {{-- @include('layout.testimonial') --}}
-
-        @include('layout.reference')
-
         @include('layout.video')
 
         @include('layout.blog')
 
+        @include('layout.reference')
+
+        {{-- @include('layout.broken') --}}
+        {{-- @include('layout.testimonial') --}}
     </div>
 @endsection
+@if (config('setting.general.slider_type', 'image') == 'image')
+    @section('script')
+        <script src="{{ asset('assets/revolution/js/revolution.tools.min.js') }}"></script>
+        <script src="{{ asset('assets/revolution/js/rs6.min.js') }}"></script>
+        <script src="{{ asset('assets/revolution/js/slider.js') }}"></script>
+    @endsection
+@endif

@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 widget-area ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 widget-area ">
                     <div class="widget widget_text clearfix res-991-mt-50">
                         <div class="textwidget widget-text">
                             <p>{{ config('setting.general.description') }}</p>
@@ -41,30 +41,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-2 widget-area">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 widget-area">
                     <div class="widget multi_widget clearfix">
                         <div class="widget_nav_menu clearfix">
                             <h3 class="widget-title">Quick links</h3>
                             <ul class="menu-footer-quick-links links-1">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Company News</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">Case Studies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-2 widget-area">
-                    <div class="widget multi_widget clearfix">
-                        <div class="widget_nav_menu clearfix">
-                            <h3 class="widget-title">Our Services</h3>
-                            <ul class="menu-footer-quick-links links-1">
-                                <li><a href="#"> Mining Sector</a></li>
-                                <li><a href="#">Project pricing</a></li>
-                                <li><a href="#">Client testimonials</a></li>
-                                <li><a href="#">Our Philosophy</a></li>
-                                <li><a href="#">Cost Calculator</a></li>
+                                @foreach ($pages as $page)
+                                    <li><a href="{{ $page->getUrl() }}">{{ $page->getTitle() }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -74,15 +58,26 @@
                         <div class="newsletter_widget clearfix">
                             <h3 class="widget-title">Bültene Abone Ol</h3>
                             {{ Form::open(['url' => route('newsletter.store'), 'class' => 'newsletter-form style1']) }}
-                            <p>{{ Form::email('email', null, ['placeholder' => __('front/contact.form_email_placeholder')]) }}
+                            <p>
+                                {{ Form::email('email', null, ['placeholder' => __('front/contact.form_email_placeholder')]) }}
                             </p>
-                            <p><button type="submit" class="g-recaptcha"
+                            @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                            <p>
+                                <button type="submit" class="g-recaptcha"
                                     data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="contact"
-                                    data-action="submit"><i class="icon-paper-plane"></i></button></p>
+                                    data-action="submit"><i class="icon-paper-plane"></i></button>
+                            </p>
                             <p class="cookies">
                                 {{ Form::checkbox('terms', true, false, ['id' => 'terms']) }}
-                                <label for="terms"></label>Gönderilen verilerin toplanmasını ve saklanmasını kabul
+                                <label for="terms"></label>Gönderilen verilerin toplanmasını ve saklanmasını
+                                kabul
                                 ediyorum.
+                                @if ($errors->has('terms'))
+                                    <br>
+                                    <span class="text-danger">{{ $errors->first('terms') }}</span>
+                                @endif
                             </p>
                             {{ Form::close() }}
                         </div>
