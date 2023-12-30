@@ -81,7 +81,6 @@
                             </p>
                             {{ Form::close() }}
                         </div>
-                        <!--featured-icon-box-->
                         <div class="featured-icon-box icon-align-before-content style1">
                             <div class="featured-icon">
                                 <div
@@ -99,7 +98,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div><!-- featured-icon-box end-->
+                        </div>
                     </div>
                 </div>
             </div>
