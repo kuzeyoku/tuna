@@ -18,25 +18,25 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $modules = [ //Eklenecek modülün module enumdaki değerini ve modelini buraya ekleyin.
-            ModuleEnum::Slider->value => Slider::class,
-            ModuleEnum::Product->value => Product::class,
-            // ModuleEnum::Service->value => Service::class,
-            // ModuleEnum::Brand->value => Brand::class,
-            ModuleEnum::Project->value => Project::class,
-            // ModuleEnum::Testimonial->value => Testimonial::class,
-            ModuleEnum::Blog->value => Blog::class,
-            ModuleEnum::Reference->value => Reference::class,
+        $modules = [
+            ModuleEnum::Slider,
+            ModuleEnum::Product,
+            // ModuleEnum::Service,
+            // ModuleEnum::Brand,
+            ModuleEnum::Project,
+            // ModuleEnum::Testimonial,
+            ModuleEnum::Blog,
+            ModuleEnum::Reference,
         ];
 
         $data = [];
 
-        foreach ($modules as $module => $model) {
-            $cacheKey = $module . "_home";
-            $data[$module] = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($model) {
-                return $model::active()->order()->get();
-            })->unless(config("setting.caching.status", false), function () use ($model) {
-                return $model::active()->order()->get();
+        foreach ($modules as $module) {
+            $model = $module->model();
+            $data[$module->value] = Cache::remember($module->value . "_home", config("setting.caching.time", 3600), function () use ($module, $model) {
+                return $model::active()->order()->limit($module->homeLimit())->get();
+            })->unless(config("setting.caching.status", false), function () use ($module, $model) {
+                return $model::active()->order()->limit($module->homeLimit())->get();
             });
         }
 

@@ -24,16 +24,10 @@ class BlogController extends Controller
         $currentpage = Paginator::resolveCurrentPage() ?: 1;
         $pagination = config("setting.pagination.front", 10);
 
-        $cacheKey = ModuleEnum::Blog->value . "_" . $currentpage;
-
-        $data = [];
+        $cacheKey = ModuleEnum::Blog->value . "_" . $currentpage . "_" . app()->getLocale();
 
         if (config("setting.caching.status", false)) {
             $data = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($pagination) {
-                $posts = Blog::active()->order()->paginate($pagination);
-                $posts->links();
-                $posts->appends(["start" => 1, "end" => 5]);
-
                 return [
                     "posts" => Blog::active()->order()->paginate($pagination),
                     "popularPost" => Blog::active()->viewOrder()->take(5)->get(),
@@ -53,9 +47,8 @@ class BlogController extends Controller
 
     public function show(Blog $post)
     {
-        $cacheKey = ModuleEnum::Blog->value . "_" . $post->id;
+        $cacheKey = ModuleEnum::Blog->value . "_" . $post->id . "_" . app()->getLocale();
         $post->increment("view_count");
-        $data = [];
         if (config("setting.caching.status", false)) {
             $data = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($post) {
                 return [

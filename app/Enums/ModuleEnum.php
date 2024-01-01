@@ -246,4 +246,19 @@ enum ModuleEnum: string
             self::Popup => ["image" => ["width" => 800, "height" => 600]],
         };
     }
+
+    public function homeLimit()
+    {
+        return match ($this) {
+            self::Blog => 3,
+            self::Service => 0,
+            self::Brand => 0,
+            self::Reference => 0,
+            self::Product => 3,
+            self::Project => 0,
+            self::Slider => 0,
+            self::Testimonial => 0,
+            self::Popup => 0,
+        };
+    }
 }
