@@ -30,7 +30,7 @@
                                         <div class="social-media-block">
                                             @if (count($post->getTags()) > 0)
                                                 <div class="prt_tag_lists">
-                                                    <span class="prt-tags-links-title">Etiketler:</span>
+                                                    <span class="prt-tags-links-title">{{ __('front/blog.tags') }}:</span>
                                                     <span class="prt-tags-links">
                                                         @foreach ($post->getTags() as $tag)
                                                             <a rel="tag">{{ $tag }}</a>

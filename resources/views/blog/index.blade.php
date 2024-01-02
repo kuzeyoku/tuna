@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', __('front/blog.page_title'))
+@section('title', __('front/blog.title'))
 @section('content')
     @include('layout.breadcrumb')
     <div class="site-main bg-white">
@@ -28,7 +28,7 @@
                                     <div class="entry-content">
                                         <div class="prt-blogbox-footer-readmore">
                                             <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
-                                                href="{{ $post->getUrl() }}">Detaylar</a>
+                                                href="{{ $post->getUrl() }}">{{ __('front/blog.detail') }}</a>
                                             <span class="prt-meta-line date-link"><time class="entry-date published"
                                                     datetime="{{ $post->updated_at }}">{{ $post->updated_at->translatedFormat('d M Y') }}</time></span>
                                         </div>

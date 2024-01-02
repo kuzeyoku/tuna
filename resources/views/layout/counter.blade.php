@@ -15,7 +15,8 @@
                                     <h4 class="prt-fid-inner">
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="125"
                                             data-interval="50" data-before="" data-before-style="sup" data-after=""
-                                            data-after-style="sub" class="numinate">125</span>
+                                            data-after-style="sub"
+                                            class="numinate">{{ __('front/counter.number_1') }}</span>
                                         <span>+</span>
                                     </h4>
                                 </div>
@@ -23,9 +24,8 @@
                         </div>
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
-                                <h3>Creative ideas</h3>
-                                <p>Empowers people of team by adding strength to their abilities of teamwork
-                                    and productivity.</p>
+                                <h3>{{ __('front/counter.number_1_title') }}</h3>
+                                <p>{{ __('front/counter.number_1_description') }}</p>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-2 col-md-3">
@@ -34,7 +34,8 @@
                                     <h4 class="prt-fid-inner">
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="1020"
                                             data-interval="100" data-before="" data-before-style="sup" data-after=""
-                                            data-after-style="sub" class="numinate">1020</span>
+                                            data-after-style="sub"
+                                            class="numinate">{{ __('front/counter.number_2') }}</span>
                                         <span></span>
                                     </h4>
                                 </div>
@@ -43,9 +44,8 @@
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
                                 <div>
-                                    <h3>Overseas operations</h3>
-                                    <p>Locations of foreign countries, across a sea or an ocean accomplished
-                                        mining - quarry projects.</p>
+                                    <h3>{{ __('front/counter.number_2_title') }}</h3>
+                                    <p>{{ __('front/counter.number_2_description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,8 @@
                                     <h4 class="prt-fid-inner">
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="10"
                                             data-interval="2" data-before="" data-before-style="sup" data-after=""
-                                            data-after-style="sub" class="numinate">10</span>
+                                            data-after-style="sub"
+                                            class="numinate">{{ __('front/counter.number_3') }}</span>
                                         <span>K</span>
                                     </h4>
                                 </div>
@@ -64,9 +65,8 @@
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
                                 <div>
-                                    <h3>Domestic operations</h3>
-                                    <p>Economic transaction mining project that going to take place inside
-                                        geo graphical boundaries.</p>
+                                    <h3>{{ __('front/counter.number_3_title') }}</h3>
+                                    <p>{{ __('front/counter.number_3_description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -111,24 +111,6 @@
                             <div class="tooltiptext">
                                 <p class="tooltip-title">Shkola Vysshikh Ded Insaydov 1000-7</p>
                                 <h3>Russia</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item5">
-                        <div class="tooltip">
-                            <div class="map-dots"></div>
-                            <div class="tooltiptext">
-                                <p class="tooltip-title">50 Barnett Street Hampshire, Tasmania</p>
-                                <h3>Australia</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item6">
-                        <div class="tooltip">
-                            <div class="map-dots"></div>
-                            <div class="tooltiptext">
-                                <p class="tooltip-title">60 Barnett Street Hampshire, Tasmania</p>
-                                <h3>Mexico</h3>
                             </div>
                         </div>
                     </div>

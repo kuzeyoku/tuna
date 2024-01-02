@@ -1,9 +1,6 @@
 <?php
 return [
     "title" => "Biz Kimiz ?",
-    'mission' => 'Misyonumuz',
-    'mission_description' => 'Misyonumuz, müşterilerimizin ihtiyaçlarına ve beklentilerine en iyi şekilde cevap vererek, onlara değer katmaktır.',
-    'vision' => 'Vizyonumuz',
-    'vision_description' => 'Vizyonumuz, dünya çapında lider bir firma olmak ve yenilikçi ürünler ve hizmetlerle müşterilerimizin ihtiyaçlarını karşılamaktır.',
-    'brand_title' => 'Hep En İyisini Tercih Ediyoruz'
+    'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, similique laudantium? Voluptates repudiandae molestiae ipsum illum voluptatibus facere hic ullam minus, libero possimus dolore, esse suscipit nesciunt eaque dolorem et.',
+    'blockquote' => 'Resim üstü yazı',
 ];

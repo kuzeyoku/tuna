@@ -5,12 +5,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="section-title mb-0">
                         <div class="title-header pb-0">
-                            <h3>BLOG & HABERLER</h3>
+                            <h3>{{ __('front/blog.title') }}</h3>
                         </div>
                     </div>
                     <div class="blog-btn res-575-mt-20">
                         <a class="prt-btn prt-btn-size-md prt-btn-shape-round prt-btn-style-fill prt-btn-color-darkcolor border-color"
-                            href="{{ route('blog.index') }}">Blog</a>
+                            href="{{ route('blog.index') }}">{{ __('front/blog.all') }}</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                             </div>
                             <div>
                                 <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
-                                    href="{{ $post->getUrl() }}">Detaylar</a>
+                                    href="{{ $post->getUrl() }}">{{ __('front/blog.detail') }}</a>
                                 <span class="prt-meta-line date-link"><time class="entry-date published"
                                         datetime="{{ $post->updated_at }}">{{ $post->updated_at->translatedFormat('d M Y') }}</time></span>
                             </div>

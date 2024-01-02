@@ -4,8 +4,7 @@
             <div class="col-lg-12">
                 <div class="section-title title-style-center_text">
                     <div class="title-header">
-                        <h3>{{ __('front/product.home_title') }}</h3>
-                        <h2 class="title">{{ __('front/product.home_subtitle') }}</h2>
+                        <h3>{{ __('front/product.title') }}</h3>
                     </div>
                 </div>
             </div>
