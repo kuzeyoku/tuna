@@ -26,8 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/megamenu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/cookie.css') }}">
-
-    <link rel='stylesheet' href="{{ asset('assets/revolution/css/rs6.css') }}">
+    <link rel='stylesheet' type="text/css" href="{{ asset('assets/revolution/css/rs6.css') }}">
 </head>
 
 <body>
