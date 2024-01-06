@@ -251,14 +251,14 @@ enum ModuleEnum: string
     {
         return match ($this) {
             self::Blog => 3,
-            self::Service => 0,
-            self::Brand => 0,
-            self::Reference => 0,
+            self::Service => null,
+            self::Brand => null,
+            self::Reference => null,
             self::Product => 3,
-            self::Project => 0,
-            self::Slider => 0,
-            self::Testimonial => 0,
-            self::Popup => 0,
+            self::Project => null,
+            self::Slider => null,
+            self::Testimonial => null,
+            self::Popup => null,
         };
     }
 }

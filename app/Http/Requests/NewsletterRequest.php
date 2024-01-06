@@ -22,8 +22,8 @@ class NewsletterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email" => "required|email|unique:newsletters,email",
-            "terms" => "required",
+            "n_email" => "required|email|unique:newsletters,email",
+            "n_terms" => "required",
             "g-recapcha-response" => ""
         ];
     }
@@ -31,8 +31,8 @@ class NewsletterRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "email" => __("front/contact.form_email"),
-            "terms" => __("front/contact.form_terms"),
+            "n_email" => __("front/footer.newsletter_email"),
+            "n_terms" => __("front/footer.newsletter_terms"),
             "g-recapcha-response" => __("front/contact.form_recaptcha")
         ];
     }

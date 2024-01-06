@@ -2,15 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
-// use App\Models\Brand;
-use App\Models\Slider;
-use App\Models\Product;
-use App\Models\Project;
-// use App\Models\Service;
 use App\Enums\ModuleEnum;
-use App\Models\Reference;
-// use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

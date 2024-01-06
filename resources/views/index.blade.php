@@ -21,10 +21,8 @@
         {{-- @include('layout.testimonial') --}}
     </div>
 @endsection
-@if (config('setting.general.slider_type', 'image') == 'image')
-    @section('script')
-        <script src="{{ asset('assets/revolution/js/revolution.tools.min.js') }}"></script>
-        <script src="{{ asset('assets/revolution/js/rs6.min.js') }}"></script>
-        <script src="{{ asset('assets/revolution/js/slider.js') }}"></script>
-    @endsection
-@endif
+@section('script')
+    <script src="{{ asset('assets/revolution/js/revolution.tools.min.js') }}"></script>
+    <script src="{{ asset('assets/revolution/js/rs6.min.js') }}"></script>
+    <script src="{{ asset('assets/revolution/js/slider.js') }}"></script>
+@endsection

@@ -4,18 +4,13 @@
     <div class="second-footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="border-top"></div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 widget-area ">
                     <div class="widget widget_text clearfix res-991-mt-50">
                         <div class="textwidget widget-text">
                             <p>{{ config('setting.general.description') }}</p>
                         </div>
                         <div class="widget_social_wrapper social-icons pt-15">
-                            <h3 class="fs-18 mb-20">Bizi Takip Et</h3>
+                            <h3 class="fs-18 mb-20">{{ __('front/footer.fallow_us') }}</h3>
                             <ul class="social-icons">
                                 @if (config('setting.social.facebook'))
                                     <li><a href="{{ config('setting.social.facebook') }}" rel="noopener"
@@ -44,7 +39,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 widget-area">
                     <div class="widget multi_widget clearfix">
                         <div class="widget_nav_menu clearfix">
-                            <h3 class="widget-title">Quick links</h3>
+                            <h3 class="widget-title">{{ __('front/footer.pages') }}</h3>
                             <ul class="menu-footer-quick-links links-1">
                                 @foreach ($pages as $page)
                                     <li><a href="{{ $page->getUrl() }}">{{ $page->getTitle() }}</a></li>
@@ -56,13 +51,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 widget-area">
                     <div class="widget multi_widget clearfix">
                         <div class="newsletter_widget clearfix">
-                            <h3 class="widget-title">Bültene Abone Ol</h3>
+                            <h3 class="widget-title">{{ __('front/footer.newsletter') }}</h3>
                             {{ Form::open(['url' => route('newsletter.store'), 'class' => 'newsletter-form style1']) }}
                             <p>
-                                {{ Form::email('email', null, ['placeholder' => __('front/contact.form_email_placeholder')]) }}
+                                {{ Form::email('n_email', null, ['placeholder' => __('front/footer.newsletter_email_placeholder')]) }}
                             </p>
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @if ($errors->has('n_email'))
+                                <span class="text-danger">{{ $errors->first('n_email') }}</span>
                             @endif
                             <p>
                                 <button type="submit" class="g-recaptcha"
@@ -70,13 +65,11 @@
                                     data-action="submit"><i class="icon-paper-plane"></i></button>
                             </p>
                             <p class="cookies">
-                                {{ Form::checkbox('terms', true, false, ['id' => 'terms']) }}
-                                <label for="terms"></label>Gönderilen verilerin toplanmasını ve saklanmasını
-                                kabul
-                                ediyorum.
-                                @if ($errors->has('terms'))
+                                {{ Form::checkbox('n_terms', true, false, ['id' => 'n_terms']) }}
+                                <label for="n_terms"></label>{{ __('front/footer.newsletter_terms_label') }}
+                                @if ($errors->has('n_terms'))
                                     <br>
-                                    <span class="text-danger">{{ $errors->first('terms') }}</span>
+                                    <span class="text-danger">{{ $errors->first('n_terms') }}</span>
                                 @endif
                             </p>
                             {{ Form::close() }}
@@ -124,9 +117,12 @@
                                 <li><a href="{{ $kvkk->getUrl() }}">{{ $kvkk->getTitle() }}</a></li>
                             @endif
                         </ul>
-                        <p>Copyright © 2023 <a href="{{ route('home') }}">{{ config('setting.general.title') }}</a>.
-                            Designed By
-                            <a href="">{{ env('APP_NAME') }}</a>
+                        <p>{!! __('front/footer.copyright', [
+                            'year' => date('Y'),
+                            'title' => config('setting.general.title'),
+                            'url' => 'https://www.kuzeyoku.com.tr',
+                            'author' => env('APP_NAME'),
+                        ]) !!}
                         </p>
                     </div>
                 </div>

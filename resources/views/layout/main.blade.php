@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/megamenu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/cookie.css') }}">
 
     <link rel='stylesheet' href="{{ asset('assets/revolution/css/rs6.css') }}">
 </head>
@@ -40,7 +41,7 @@
         <a id="totop" href="#top">
             <i class="icon-angle-up"></i>
         </a>
-
+        @include('layout.cookie_alert')
     </div>
 
     <script src="{{ asset('assets/js/jquery-3.6.3.min.js') }}"></script>
@@ -59,6 +60,8 @@
     <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('assets/js/cookie.js') }}"></script>
     @yield('script')
     <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
     @include('layout.alert')
