@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="section-title title-style-center_text">
                     <div class="title-header">
-                        <h3>{{ __('front/product.title') }}</h3>
+                        <h3>{{ __('front/product.txt1') }}</h3>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                                 <h3><a href="{{ $product->getUrl() }}">{{ $product->getTitle() }}</a></h3>
                             </div>
                             <div class="featured-desc">
-                                <p>{{ $product->getShortDescription(100) }}</p>
+                                {{ $product->getShortDescription(100) }}
                             </div>
                         </div>
                     </div>

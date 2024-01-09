@@ -19,7 +19,7 @@
                         <div>
                             <aside class="widget widget-nav-menu with-title">
                                 <div>
-                                    <h3 class="widget-title mb-30">Project Details</h3>
+                                    <h3 class="widget-title mb-30">{{ __('front/product.txt3') }}</h3>
                                     <ul class="project-details">
                                         @foreach ($product->getFeatures() as $key => $value)
                                             <li>
@@ -39,9 +39,8 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- row end -->
+                </div>
             </div>
         </div>
-
-    </div><!--site-main end-->
+    </div>
 @endsection

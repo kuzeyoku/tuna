@@ -1,8 +1,8 @@
 <?php
 return [
-    "home_title" => "Projelerimiz",
-    "home_description" => "Yapımı devam eden yada tamamladığımız projelerimizi 3D olarak inceleyebilirsiniz..",
-    "page_title" => "Projelerimiz",
-    "detail" => "Proje Detayları",
+    "txt1" => "İşletmelerimiz",
+    "txt2" => "Detaylar",
+    "txt3" => "İşletme Bilgileri",
+    "txt4" => "",
 
 ];

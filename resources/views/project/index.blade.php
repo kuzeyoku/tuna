@@ -1,40 +1,36 @@
 @extends('layout.main')
-@section('title', __('front/project.page_title'))
+@section('title', __('front/project.txt1'))
 @section('content')
-@include('layout.breadcrumb')
-<div class="case-studies-area overflow-hidden grid-items default-padding">
-    <div class="container">
-        <div class="case-items-area">
-            <div class="masonary">
-                <div id="portfolio-grid" class="case-items colums-2" style="position: relative; height: 1140px;">
+    @include('layout.breadcrumb')
+    <div class="site-main bg-white">
+        <section class="prt-row blog-section-01 clearfix">
+            <div class="container">
+                <div class="row row-equal-height">
                     @foreach ($projects as $project)
-                    <div class="pf-item" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ $project->getImageUrl() }}" alt="{{ $project->getTitle() }}">
-                                <a href="{{ $project->getImageUrl() }}" class="item popup-gallery">
-                                    @svg('fas-plus')
-                                </a>
-                            </div>
-                            <div class="info">
-                                @if ($project->category)
-                                <div class="tags">
-                                    # {{ $project->category->getTitle() }}
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                            <div class="featured-imagebox featured-imagebox-post style1">
+                                <div class="featured-thumbnail">
+                                    <a href="{{ $project->getImageUrl() }}"><img class="img-fluid"
+                                            src="{{ $project->getImageUrl() }}" alt="image" width="740"
+                                            height="500"></a>
                                 </div>
-                                @endif
-                                <h4>
-                                    <a href="{{ $project->getUrl() }}">{{ $project->getTitle() }}</a>
-                                </h4>
+                                <div class="featured-content">
+                                    <div class="featured-title">
+                                        <h3><a href="{{ $project->getUrl() }}">{{ $project->getTitle() }}</a></h3>
+                                    </div>
+                                    <div class="featured-desc">
+                                        {{ $project->getShortDescription(100) }}
+                                    </div>
+                                    <div>
+                                        <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
+                                            href="{{ $project->getUrl() }}">{{ __('front/project.txt2') }}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</div>
-@endsection
-@section("style")
-<link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet">
 @endsection

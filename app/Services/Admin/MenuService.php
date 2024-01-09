@@ -3,9 +3,11 @@
 namespace App\Services\Admin;
 
 use App\Models\Menu;
+use App\Models\Page;
 use App\Enums\ModuleEnum;
 use Illuminate\Http\Request;
 use App\Models\MenuTranslate;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class MenuService extends BaseService
@@ -85,14 +87,23 @@ class MenuService extends BaseService
 
     public function getUrlList(): array
     {
+        $pages = Cache::remember("pages_menu_list", config("setting.caching.time", 3600), function () {
+            $pages = Page::active()->get();
+            foreach ($pages as $page) {
+                $data[$page->getUrl()] = $page->getTitle();
+            }
+            return $data ?? [];
+        });
+
         return [
-            route("home") => __("front/home.page_title"),
+            route("home") => __("admin/general.home"),
             route(ModuleEnum::Blog->Route() . ".index") => ModuleEnum::Blog->singleTitle(),
-            route(ModuleEnum::Service->Route() . ".index") => ModuleEnum::Service->singleTitle(),
+            //route(ModuleEnum::Service->Route() . ".index") => ModuleEnum::Service->singleTitle(),
             route(ModuleEnum::Product->Route() . ".index") => ModuleEnum::Product->singleTitle(),
             route(ModuleEnum::Project->Route() . ".index") => ModuleEnum::Project->singleTitle(),
             // route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
-            route("contact.index") => __("front/contact.page_title"),
+            route("contact.index") => __("front/contact.txt1"),
+            "Sayfalar" => $pages ?? [],
         ];
     }
 }

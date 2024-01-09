@@ -85,7 +85,7 @@ class Product extends Model
         return null;
     }
 
-    public function getShortDescription(int $length)
+    public function getShortDescription(int $length = 100)
     {
         if (array_key_exists($this->locale, $this->description))
             return substr(strip_tags($this->description[$this->locale]), 0, $length) . "...";
