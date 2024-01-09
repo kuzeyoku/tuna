@@ -104,6 +104,6 @@ class MenuService extends BaseService
             // route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
             route("contact.index") => __("front/contact.txt1"),
             "Sayfalar" => $pages ?? [],
-        ];
+        ];  
     }
 }
