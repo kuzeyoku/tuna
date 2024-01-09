@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use App\Models\Message;
 use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Mail;
@@ -24,24 +25,20 @@ class ContactController extends Controller
         }
 
         try {
-            $this->setMailSettings();
-            Mail::to("yuceloglu1848@gmail.com")
-                ->send(new \App\Mail\Contact($request->validated()));
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+            Mail::to(config("setting.contact.email"))
+                ->send(new Contact($request));
 
+            $data = array_merge($request->validated(), ["user_agent" => $request->userAgent(), "ip" => $request->ip()]);
 
-        $data = array_merge($request->validated(), ["user_agent" => $request->userAgent(), "ip" => $request->ip()]);
-
-        if (Message::Create($data)) {
+            Message::create($data);
             return back()
                 ->withSuccess(__("front/contact.send_success"));
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()
+                ->withInput()
+                ->withError(__("front/contact.send_error"));
         }
-
-        return back()
-            ->withInput()
-            ->withError(__("front/contact.send_error"));
     }
 
     private function recaptcha($request)
@@ -57,16 +54,5 @@ class ContactController extends Controller
         }
 
         return true;
-    }
-
-    private function setMailSettings()
-    {
-        config([
-            "mail.mailers.smtp.host" => config("setting.smtp_host", env('MAIL_HOST')),
-            "mail.mailers.smtp.port" => config("setting.smtp_port", env('MAIL_PORT')),
-            "mail.mailers.smtp.encryption" => config("setting.smtp_encryption", env('MAIL_ENCRYPTION')),
-            "mail.mailers.smtp.username" => config("setting.smtp_username", env('MAIL_USERNAME')),
-            "mail.mailers.smtp.password" => config("setting.smtp_password", env('MAIL_PASSWORD')),
-        ]);
     }
 }

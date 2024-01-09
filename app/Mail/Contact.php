@@ -3,8 +3,9 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -13,47 +14,32 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
+    protected $request;
 
-    protected $data;
-
-    public function __construct(array $data)
+    public function __construct(Request $request)
     {
-        $this->data = $data;
+        $this->request = $request;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'İletişim E-Postası',
-        );
+        $replyTo = [new Address($this->request->email)];
+        $subject = config("setting.general.title", env("APP_NAME")) . " İletişim";
+
+        return new Envelope(replyTo: $replyTo, subject: $subject);
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
-            view: 'emails.contact',
+            markdown: 'emails.contact',
             with: [
-                "data" => $this->data
-            ],
+                'name' => $this->request->name,
+                'email' => $this->request->email,
+                'phone' => $this->request->phone,
+                "subject" => $this->request->subject,
+                "message" => $this->request->message
+            ]
         );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
     }
 }

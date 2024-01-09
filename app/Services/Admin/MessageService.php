@@ -27,32 +27,16 @@ class MessageService extends BaseService
         parent::update($data, $message);
     }
 
-    public function sendReply(Request $request)
+    public function sendReply($request, Model $message)
     {
         try {
-            $message = Message::findOrFail($request->message_id);
+            Mail::to($message->email)->send(new ReplyMessage($request, $message));
 
-            $this->setMailSettings();
-
-            Mail::send(new ReplyMessage($request, $message->name));
-
-            $message->update([
+            return $message->update([
                 "status" => StatusEnum::Answered->value
             ]);
-            return true;
         } catch (\Exception $e) {
             Log::channel('custom_errors')->error($e->getMessage());
         }
-    }
-
-    public function setMailSettings()
-    {
-        config([
-            "mail.mailers.smtp.host" => config("setting.smtp_host", env('MAIL_HOST')),
-            "mail.mailers.smtp.port" => config("setting.smtp_port", env('MAIL_PORT')),
-            "mail.mailers.smtp.encryption" => config("setting.smtp_encryption", env('MAIL_ENCRYPTION')),
-            "mail.mailers.smtp.username" => config("setting.smtp_username", env('MAIL_USERNAME')),
-            "mail.mailers.smtp.password" => config("setting.smtp_password", env('MAIL_PASSWORD')),
-        ]);
     }
 }

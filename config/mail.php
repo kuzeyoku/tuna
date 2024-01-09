@@ -37,11 +37,11 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => config("setting.smtp.host", env('MAIL_HOST')),
+            'port' => config("setting.smtp.port", env('MAIL_PORT')),
+            'encryption' => config("setting.smtp.encryption", env('MAIL_ENCRYPTION')),
+            'username' => config("setting.smtp.username", env('MAIL_USERNAME')),
+            'password' => config("setting.smtp.password", env('MAIL_PASSWORD')),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -99,8 +99,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => config("setting.smtp.from_address", env('MAIL_FROM_ADDRESS')),
+        'name' => config("setting.smtp.from_name", env('MAIL_FROM_NAME')),
     ],
 
     /*
