@@ -55,10 +55,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('assets/admin/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/script.js') }}"></script>
     @if (config('setting.recaptcha.status') == App\Enums\StatusEnum::Active->value)
         <script>
             function onSubmit(token) {

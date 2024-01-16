@@ -5,7 +5,7 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $slider), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => $slider->getImageUrl(),
+        'data-default-file' => $slider->image_url,
         'accept' => '.png, .jpg, .jpeg, .gif',
     ]) !!}
     <div class="tab-content">
@@ -13,13 +13,13 @@
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
                     {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
-                    {!! Form::text("title[$lang->code]", $slider->title[$lang->code] ?? null, [
+                    {!! Form::text("title[$lang->code]", $slider->titles[$lang->code] ?? null, [
                         'placeholder' => __("admin/{$folder}.form_title_description"),
                     ]) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
-                    {!! Form::textarea("description[$lang->code]", $slider->description[$lang->code] ?? null, [
+                    {!! Form::textarea("description[$lang->code]", $slider->descriptions[$lang->code] ?? null, [
                         'placeholder' => __("admin/{$folder}.form_description_placeholder"),
                     ]) !!}
                 </div>

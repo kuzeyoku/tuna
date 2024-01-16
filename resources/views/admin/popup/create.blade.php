@@ -9,6 +9,7 @@
         {!! Form::select(
             'type',
             [
+                0 => __('admin/general.select'),
                 'image' => __("admin/{$folder}.type_image"),
                 'text' => __("admin/{$folder}.type_text"),
                 'video' => __("admin/{$folder}.type_video"),
@@ -17,44 +18,44 @@
             ['id' => 'type'],
         ) !!}
     </div>
-    <div class="form-group" id="image">
-        {!! Form::file('image', ['class' => 'dropify']) !!}
+    <div class="form-group" id="image" style="display: none">
+        {!! Form::file('image', ['class' => 'dropify', 'accept' => '.png, .jpg, .jpeg, .gif']) !!}
     </div>
-    @foreach (languageList() as $key => $lang)
-        <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
-            <div class="form-group">
-                {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
-                {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form_title_placeholder")]) !!}
+    <div class="tab-content">
+        @foreach (languageList() as $key => $lang)
+            <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
+                <div class="form-group">
+                    {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
+                    {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form_title_placeholder")]) !!}
+                </div>
+                <div class="form-group" id="text" style="display: none">
+                    {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
+                    {!! Form::textarea("description[$lang->code]", null, ['class' => 'editor']) !!}
+                </div>
             </div>
-            <div class="form-group" id="text">
-                {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
-                {!! Form::textarea("description[$lang->code]", null, ['class' => 'editor']) !!}
-            </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+    <div class="form-group" id="video" style="display: none">
+        {!! Form::label('video', __("admin/{$folder}.form_video")) !!}
+        {!! Form::url('video', null, ['placeholder' => __("admin/{$folder}.form_video_placeholder"), 'id' => null]) !!}
+    </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('time', __("admin/{$folder}.form_time")) !!}
                 {!! Form::number('time', null, ['placeholder' => __("admin/{$folder}.form_time_placeholder")]) !!}
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('width', __("admin/{$folder}.form_width")) !!}
                 {!! Form::number('width', null, ['placeholder' => __("admin/{$folder}.form_width_placeholder")]) !!}
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('url', __("admin/{$folder}.form_url")) !!}
                 {!! Form::url('url', null, ['placeholder' => __("admin/{$folder}.form_url_placeholder")]) !!}
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="form-group" id="video">
-                {!! Form::label('video', __("admin/{$folder}.form_video")) !!}
-                {!! Form::url('video', null, ['placeholder' => __("admin/{$folder}.form_video_placeholder")]) !!}
             </div>
         </div>
         <div class="col-lg-4">
@@ -104,16 +105,9 @@
 @section('script')
     <script>
         $("#type").on("change", function() {
-            if ($(this).val() == "image") {
-                $("#image").show();
-                $("#text").hide();
-            } else if ($(this).val() == "text") {
-                $("#image").hide();
-                $("#text").show();
-            } else {
-                $("#image").hide();
-                $("#text").hide();
-            }
+            var type = $(this).val();
+            $("#" + type).show();
+            $("#text, #image, #video").not("#" + type).hide();
         });
     </script>
 @endsection

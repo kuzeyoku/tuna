@@ -29,7 +29,7 @@
                                 @if ($menu->parent_id == 0)
                                     <li class="parent d-flex flex-row justify-content-between align-center">
                                         <div>
-                                            <a class="text-white">{{ $menu->getTitle() }}</a>
+                                            <a class="text-white">{{ $menu->title }}</a>
                                         </div>
                                         <div>
                                             <a href="{{ route("admin.{$folder}.edit", $menu) }}"

@@ -3,7 +3,7 @@
 @section('content')
     @include('admin.layout.langTabs')
     {!! Form::open(['route' => "admin.{$route}.store", 'method' => 'post', 'files' => true]) !!}
-    {!! Form::file('image', ['class' => 'dropify', 'accept' => '.jpg, .png, .gif']) !!}
+    {!! Form::file('image', ['class' => 'dropify', 'accept' => '.png, .jpg, .jpeg, .gif']) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">

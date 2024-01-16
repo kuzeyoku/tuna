@@ -6,20 +6,20 @@
     {!! Form::file('image', [
         'class' => 'dropify',
         'data-default-file' => uploadFolder($folder, $product->image),
-        'accept' => '.jpg, .png, .gif'
+        'accept' => '.png, .jpg, .jpeg, .gif',
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
                     {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
-                    {!! Form::text("title[$lang->code]", $product->title[$lang->code] ?? null, [
+                    {!! Form::text("title[$lang->code]", $product->titles[$lang->code] ?? null, [
                         'placeholder' => __("admin/{$folder}.form_title_placeholder"),
                     ]) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
-                    {!! Form::textarea("description[$lang->code]", $product->description[$lang->code] ?? null, [
+                    {!! Form::textarea("description[$lang->code]", $product->descriptions[$lang->code] ?? null, [
                         'class' => 'editor',
                     ]) !!}
                 </div>

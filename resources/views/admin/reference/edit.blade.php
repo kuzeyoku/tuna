@@ -4,7 +4,8 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $reference), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => uploadFolder($folder, $reference->image),
+        'data-default-file' => $reference->image_url,
+        'accept' => '.png, .jpg, .jpeg, .gif',
     ]) !!}
     <div class="form-group">
         {!! Form::label('url', __("admin/{$folder}.form_url")) !!}

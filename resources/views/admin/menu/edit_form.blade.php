@@ -1,17 +1,17 @@
 @php
-unset($parentList[$menu->id]);
+    unset($parentList[$menu->id]);
 @endphp
 {!! Form::open(['url' => route("admin.{$route}.update", $menu), 'method' => 'put']) !!}
 <div class="tab-content">
     @foreach (languageList() as $key => $lang)
-    <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
-        <div class="form-group">
-            {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
-            {!! Form::text("title[$lang->code]", $menu->title[$lang->code] ?? null, [
-            'placeholder' => __("admin/{$folder}.form_title_placeholder"),
-            ]) !!}
+        <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
+            <div class="form-group">
+                {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
+                {!! Form::text("title[$lang->code]", $menu->titles[$lang->code] ?? null, [
+                    'placeholder' => __("admin/{$folder}.form_title_placeholder"),
+                ]) !!}
+            </div>
         </div>
-    </div>
     @endforeach
 </div>
 <div class="form-group">

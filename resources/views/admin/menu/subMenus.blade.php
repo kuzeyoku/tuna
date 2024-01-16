@@ -2,7 +2,7 @@
     @foreach ($menu->subMenu as $subMenu)
         <li class="d-flex flex-row justify-content-between align-center">
             <div>
-                <a>{{ $subMenu->getTitle() }}</a>
+                <a>{{ $subMenu->title }}</a>
             </div>
             <div>
                 <a href="{{ route("admin.{$folder}.edit", $subMenu) }}" class="btn btn-sm btn-primary">

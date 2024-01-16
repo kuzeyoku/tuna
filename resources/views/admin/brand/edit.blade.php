@@ -4,7 +4,8 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $brand), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => $brand->getImageUrl(),
+        'data-default-file' => $brand->image_url,
+        'accept' => '.png, .jpg, .jpeg, .gif',
     ]) !!}
     <div class="row">
         <div class="col-lg-6">

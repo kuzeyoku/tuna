@@ -19,8 +19,8 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->title[config("app.fallback_locale")] }}</td>
-                        <td>{{ $item->category }}</td>
+                        <td>{{ $item->titles[config('app.fallback_locale')] }}</td>
+                        <td>{{ $item->category->title ?? __('admin/general.uncategorized') }}</td>
                         <td>{{ $item->allprice }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>

@@ -22,7 +22,7 @@
         @foreach ($project->images as $image)
             <div class="col-md-2">
                 <div class="p-2 border rounded position-relative mb-4">
-                    <img src="{{ uploadFolder($folder, $image->image) }}" class="img-fluid">
+                    <img src="{{ $image->image_url }}" class="img-fluid">
                     {!! Form::open([
                         'url' => route("admin.{$route}.imageDelete", $image),
                         'method' => 'delete',

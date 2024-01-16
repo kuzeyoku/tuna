@@ -17,11 +17,11 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img class="table_image" src="{{ uploadFolder($folder, $item->image) }}"></td>
+                        <td><img class="table_image" src="{{ $item->image_url }}"></td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
-                        <td>@include("admin.layout.action")</td>
+                        <td>@include('admin.layout.action')</td>
                     </tr>
                 @empty
                     <tr>

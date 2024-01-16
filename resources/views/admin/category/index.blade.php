@@ -18,7 +18,7 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->title[config("app.fallback_locale")] }}</td>
+                        <td>{{ $item->titles[config("app.fallback_locale")] }}</td>
                         <td>{{ __('admin/' . $item->module . '.title') }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>

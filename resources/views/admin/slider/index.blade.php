@@ -18,8 +18,8 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img class="table_image" src="{{ $item->getImageUrl() }}"></td>
-                        <td>{{ $item->title[config('app.fallback_locale')] ?? null }}</td>
+                        <td><img class="table_image" src="{{ $item->image_url }}"></td>
+                        <td>{{ $item->titles[config('app.fallback_locale')] ?? null }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>

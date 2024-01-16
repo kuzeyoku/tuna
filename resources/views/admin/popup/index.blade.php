@@ -7,6 +7,7 @@
                 <tr>
                     <th>#ID</th>
                     <th>{{ __("admin/{$folder}.table_type") }}</th>
+                    <th>{{ __("admin/{$folder}.table_title") }}</th>
                     <th>{{ __('admin/general.table_created_at') }}</th>
                     <th>{{ __('admin/general.table_updated_at') }}</th>
                     <th>{{ __('admin/general.table_status') }}</th>
@@ -17,7 +18,8 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ __("admin/{$folder}.type.{$item->type}") }}</td>
+                        <td>{{ __("admin/{$folder}.type_{$item->type}") }}</td>
+                        <td>{{ $item->title }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
