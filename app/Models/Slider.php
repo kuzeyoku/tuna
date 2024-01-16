@@ -29,11 +29,6 @@ class Slider extends Model
         $this->locale = session()->get("locale");
     }
 
-    public function translate()
-    {
-        return $this->hasMany(SliderTranslate::class);
-    }
-
     public function scopeActive($query)
     {
         return $query->whereStatus(StatusEnum::Active->value);
@@ -44,34 +39,35 @@ class Slider extends Model
         return $query->orderBy("order");
     }
 
+    public function translate()
+    {
+        return $this->hasMany(SliderTranslate::class);
+    }
+
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("title")->first();
+    }
+
+    public function getTitlesAttribute()
+    {
+        return $this->translate->pluck("title", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("description")->first();
     }
 
-    public function getTitle()
+    public function getDescriptionsAttribute()
     {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
+        return $this->translate->pluck("description", "lang")->all();
     }
 
-    public function getDescription()
+    public function getImageUrlAttribute()
     {
-        if (array_key_exists($this->locale, $this->description))
-            return $this->description[$this->locale];
-        return null;
-    }
-
-    public function getImageUrl()
-    {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Slider->folder() . "/" . $this->attributes["image"]);
-        return asset("assets/img/noimage.png");
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Slider->folder() . "/" . $this->image);
     }
 }

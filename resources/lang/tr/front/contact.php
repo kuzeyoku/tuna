@@ -1,7 +1,7 @@
 <?php
 return [
     "txt1" => "İletişim",
-    "txt2" => "Hizmet ve fiyatlarımız hakkında bilgi almak, soru, görüş ve önerileriniz için mesaj
+    "txt2" => "Ürünlerimiz hakkında bilgi almak, soru, görüş ve önerileriniz için mesaj
     gönderebilirsiniz.",
     "txt3" => "İletişime Geçin",
     "txt4" => "Adınız ve Soyadınız",

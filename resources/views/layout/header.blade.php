@@ -78,7 +78,7 @@
                                             @else
                                                 <li class="mega-menu-item has-submenu">
                                                     <a class="mega-menu-link"
-                                                        href="{{ $menu->url }}">{{ $menu->getTitle() }}</a>
+                                                        href="{{ $menu->url }}">{{ $menu->title }}</a>
                                                 </li>
                                             @endif
                                         @endif

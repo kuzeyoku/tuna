@@ -14,7 +14,7 @@
                 <div class="form-group">
                     {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
                     {!! Form::text("title[$lang->code]", $slider->titles[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form_title_description"),
+                        'placeholder' => __("admin/{$folder}.form_title_placeholder"),
                     ]) !!}
                 </div>
                 <div class="form-group">

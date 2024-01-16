@@ -16,14 +16,7 @@ class Popup extends Model
         "image",
         "video",
         "url",
-        "time",
-        "width",
-        "closeOnEscape",
-        "closeButton",
-        "overlayClose",
-        "pauseOnHover",
-        "fullScreenButton",
-        "color",
+        "setting",
         "status"
     ];
 
@@ -42,33 +35,35 @@ class Popup extends Model
         return $this->hasMany(PopupTranslate::class);
     }
 
+    public function getTitlesAttribute()
+    {
+        return $this->translate->pluck("title", "lang")->all();
+    }
+
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck('title')->first();
+    }
+
+    public function getDescriptionsAttribute()
+    {
+        return $this->translate->pluck("description", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck('description')->first();
     }
 
-    public function getTitle()
+    public function getSettingsAttribute()
     {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
+        return json_decode($this->setting);
     }
 
-    public function getDescription()
+    public function getImageUrlAttribute()
     {
-        if (array_key_exists($this->locale, $this->description))
-            return $this->description[$this->locale];
-        return null;
-    }
-    public function getImageUrl()
-    {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Popup->folder() . "/" . $this->image);
-        return asset("assets/img/noimage.png");
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Popup->folder() . "/" . $this->image);
     }
 }

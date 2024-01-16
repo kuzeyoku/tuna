@@ -28,10 +28,10 @@ class Reference extends Model
         return $query->orderBy("order", "asc");
     }
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Reference->folder() . "/" . $this->image);
-        return asset("assets/img/noimage.png");
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Reference->folder() . "/" . $this->image);
     }
 }

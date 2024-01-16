@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', $product->getTitle())
+@section('title', $product->title)
 @section('content')
     @include('layout.breadcrumb')
     <div class="site-main bg-white">
@@ -9,7 +9,7 @@
                     <div class="col-lg-12">
                         <div class="position-relative">
                             <div class="border-rad_10" data-aos="fade-up" data-aos-duration="1500">
-                                <img class="img-fluid w-100" src="{{ $product->getImageUrl() }}" alt="image">
+                                <img class="img-fluid w-100" src="{{ $product->image_url }}" alt="image">
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                                 <div>
                                     <h3 class="widget-title mb-30">{{ __('front/product.txt3') }}</h3>
                                     <ul class="project-details">
-                                        @foreach ($product->getFeatures() as $key => $value)
+                                        @foreach ($product->feature as $key => $value)
                                             <li>
                                                 <h3>{{ $key }} : </h3>
                                                 <div class="content-wrapper">{{ $value }}</div>
@@ -35,7 +35,7 @@
                     <div class="col-lg-8 content-area">
                         <div class="prt-service-single-content-area">
                             <div class="prt-service-description">
-                                {!! $product->getDescription() !!}
+                                {!! $product->description !!}
                             </div>
                         </div>
                     </div>

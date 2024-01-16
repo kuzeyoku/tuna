@@ -10,20 +10,19 @@
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                             <div class="featured-imagebox featured-imagebox-post style1">
                                 <div class="featured-thumbnail">
-                                    <a href="{{ $project->getImageUrl() }}"><img class="img-fluid"
-                                            src="{{ $project->getImageUrl() }}" alt="image" width="740"
-                                            height="500"></a>
+                                    <a href="{{ $project->image_url }}"><img class="img-fluid" src="{{ $project->image_url }}"
+                                            alt="image" width="740" height="500"></a>
                                 </div>
                                 <div class="featured-content">
                                     <div class="featured-title">
-                                        <h3><a href="{{ $project->getUrl() }}">{{ $project->getTitle() }}</a></h3>
+                                        <h3><a href="{{ $project->url }}">{{ $project->title }}</a></h3>
                                     </div>
                                     <div class="featured-desc">
-                                        {{ $project->getShortDescription(100) }}
+                                        {{ $project->short_description }}
                                     </div>
                                     <div>
                                         <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
-                                            href="{{ $project->getUrl() }}">{{ __('front/project.txt2') }}</a>
+                                            href="{{ $project->url }}">{{ __('front/project.txt2') }}</a>
                                     </div>
                                 </div>
                             </div>

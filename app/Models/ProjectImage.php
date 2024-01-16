@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Enums\ModuleEnum;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProjectImage extends Model
 {
@@ -17,8 +17,10 @@ class ProjectImage extends Model
 
     public $timestamps = false;
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
         return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
     }
 }

@@ -44,25 +44,19 @@ class Menu extends Model
         return $query->orderBy("order", "asc");
     }
 
-    public function getTitleAttribute()
+    public function getTitlesAttribute()
     {
-        return  $this->translate->pluck("title", "lang")->toArray();
+        return  $this->translate->pluck("title", "lang")->all();
     }
 
-    public function getTitle()
+    public function getTitleAttribute()
     {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
+        return $this->translate->where("lang", $this->locale)->pluck('title')->first();
     }
 
     public static function toSelectArray($type)
     {
-        return Menu::whereType($type)->get()->pluck("title." . app()->getLocale(), "id")->toArray();
+        return Menu::whereType($type)->get()->pluck("titles." . app()->getLocale(), "id")->toArray();
     }
 
-    public static function toSelectArrayWithUrl($type)
-    {
-        return Menu::whereType($type)->get()->pluck("title." . app()->getLocale(), "url")->toArray();
-    }
 }

@@ -16,7 +16,7 @@
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="125"
                                             data-interval="50" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
-                                            class="numinate">{{ __('front/counter.number_1') }}</span>
+                                            class="numinate">{{ __('front/counter.txt1') }}</span>
                                         <span>+</span>
                                     </h4>
                                 </div>
@@ -24,8 +24,8 @@
                         </div>
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
-                                <h3>{{ __('front/counter.number_1_title') }}</h3>
-                                <p>{{ __('front/counter.number_1_description') }}</p>
+                                <h3>{{ __('front/counter.txt2') }}</h3>
+                                <p>{{ __('front/counter.txt3') }}</p>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-2 col-md-3">
@@ -35,7 +35,7 @@
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="1020"
                                             data-interval="100" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
-                                            class="numinate">{{ __('front/counter.number_2') }}</span>
+                                            class="numinate">{{ __('front/counter.txt4') }}</span>
                                         <span></span>
                                     </h4>
                                 </div>
@@ -44,8 +44,8 @@
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
                                 <div>
-                                    <h3>{{ __('front/counter.number_2_title') }}</h3>
-                                    <p>{{ __('front/counter.number_2_description') }}</p>
+                                    <h3>{{ __('front/counter.txt5') }}</h3>
+                                    <p>{{ __('front/counter.txt6') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                         <span data-appear-animation="animateDigits" data-from="0" data-to="10"
                                             data-interval="2" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
-                                            class="numinate">{{ __('front/counter.number_3') }}</span>
+                                            class="numinate">{{ __('front/counter.txt7') }}</span>
                                         <span>K</span>
                                     </h4>
                                 </div>
@@ -65,8 +65,8 @@
                         <div class="col-xl-8 col-lg-10 col-md-9">
                             <div class="prt-fid-title style1 ml_25 res-1199-ml-0">
                                 <div>
-                                    <h3>{{ __('front/counter.number_3_title') }}</h3>
-                                    <p>{{ __('front/counter.number_3_description') }}</p>
+                                    <h3>{{ __('front/counter.txt8') }}</h3>
+                                    <p>{{ __('front/counter.txt9') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                         <div class="tooltip tooltip-top">
                             <div class="map-dots"></div>
                             <div class="tooltiptext">
-                                <p class="tooltip-title">İstanbul/Çatalca Binkılıç İşletmesi</p>
-                                <h3>Manganez</h3>
+                                <p class="tooltip-title">{{ __('front/counter.txt10') }}</p>
+                                <h3>{{ __('front/counter.txt11') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -91,8 +91,8 @@
                         <div class="tooltip">
                             <div class="map-dots"></div>
                             <div class="tooltiptext">
-                                <p class="tooltip-title">73G5+7JF, Kerman, Kerman Province</p>
-                                <h3>Iran</h3>
+                                <p class="tooltip-title">{{ __('front/counter.txt12') }}</p>
+                                <h3>{{ __('front/counter.txt13') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -100,8 +100,8 @@
                         <div class="tooltip">
                             <div class="map-dots"></div>
                             <div class="tooltiptext">
-                                <p class="tooltip-title">HPV4+74V, Arusha, Tanzania</p>
-                                <h3>Tanzania</h3>
+                                <p class="tooltip-title">{{ __('front/counter.txt14') }}</p>
+                                <h3>{{ __('front/counter.txt15') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -109,8 +109,8 @@
                         <div class="tooltip">
                             <div class="map-dots"></div>
                             <div class="tooltiptext">
-                                <p class="tooltip-title">Shkola Vysshikh Ded Insaydov 1000-7</p>
-                                <h3>Russia</h3>
+                                <p class="tooltip-title">{{ __('front/counter.txt16') }}</p>
+                                <h3>{{ __('front/counter.txt17') }}</h3>
                             </div>
                         </div>
                     </div>

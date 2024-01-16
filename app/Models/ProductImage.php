@@ -17,8 +17,10 @@ class ProductImage extends Model
 
     public $timestamps = false;
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
         return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Product->folder() . "/" . $this->image);
     }
 }

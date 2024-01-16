@@ -30,6 +30,16 @@ class Project extends Model
         $this->locale = session()->get("locale");
     }
 
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
+    }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order");
+    }
+
     public function translate()
     {
         return $this->hasMany(ProjectTranslate::class);
@@ -45,24 +55,24 @@ class Project extends Model
         return $this->hasMany(ProjectImage::class);
     }
 
-    public function scopeActive($query)
+    public function getTitlesAttribute()
     {
-        return $query->whereStatus(StatusEnum::Active->value);
-    }
-
-    public function scopeOrder($query)
-    {
-        return $query->orderBy("order");
+        return $this->translate->pluck("title", "lang")->all();
     }
 
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("title")->first();
+    }
+
+    public function getDescriptionsAttribute()
+    {
+        return $this->translate->pluck("description", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("description")->first();
     }
 
     public function getFeaturesAttribute()
@@ -70,30 +80,7 @@ class Project extends Model
         return $this->translate->pluck("features", "lang")->toArray();
     }
 
-    public function getTitle()
-    {
-        if (array_key_exists($this->locale, $this->title)) {
-            return $this->title[$this->locale];
-        }
-        return null;
-    }
-
-    public function getDescription()
-    {
-        if (array_key_exists($this->locale, $this->description)) {
-            return $this->description[$this->locale];
-        }
-        return null;
-    }
-
-    public function getShortDescription(int $length = 100)
-    {
-        if (array_key_exists($this->locale, $this->description))
-            return substr(strip_tags($this->description[$this->locale]), 0, $length) . "...";
-        return null;
-    }
-
-    public function getFeatures()
+    public function getFeatureAttribute()
     {
         $result = [];
         if (array_key_exists($this->locale, $this->features)) {
@@ -108,15 +95,15 @@ class Project extends Model
         return $result;
     }
 
-    public function getUrl()
+    public function getUrlAttribute()
     {
         return route(ModuleEnum::Project->route() . ".show", [$this, $this->slug]);
     }
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
-        return asset("assets/img/noimage.png");
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
     }
 }

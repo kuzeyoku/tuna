@@ -18,4 +18,5 @@ class BlogTranslate extends Model
     ];
 
     public $timestamps = false;
+
 }

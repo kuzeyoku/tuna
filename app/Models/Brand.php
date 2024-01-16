@@ -29,7 +29,7 @@ class Brand extends Model
         return $query->orderBy("order");
     }
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
         if ($this->image)
             return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Brand->folder() . "/" . $this->image);

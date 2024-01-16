@@ -13,7 +13,7 @@
     </url>
     @foreach ($services as $service)
         <url>
-            <loc>{{ url($service->getUrl()) }}/</loc>
+            <loc>{{ url($service->url) }}/</loc>
             <changefreq>{{ config('setting.sitemap.service_detail_changefreq') }}</changefreq>
             <priority>{{ config('setting.sitemap.service_detail_priority') }}</priority>
         </url>
@@ -25,7 +25,7 @@
     </url>
     @foreach ($projects as $project)
         <url>
-            <loc>{{ url($project->getUrl()) }}/</loc>
+            <loc>{{ url($project->url) }}/</loc>
             <changefreq>{{ config('setting.sitemap.project_detail_changefreq') }}</changefreq>
             <priority>{{ config('setting.sitemap.project_detail_priority') }}</priority>
         </url>
@@ -37,7 +37,7 @@
     </url>
     @foreach ($products as $product)
         <url>
-            <loc>{{ url($product->getUrl()) }}/</loc>
+            <loc>{{ url($product->url) }}/</loc>
             <changefreq>{{ config('setting.sitemap.product_detail_changefreq') }}</changefreq>
             <priority>{{ config('setting.sitemap.product_detail_priority') }}</priority>
         </url>
@@ -49,7 +49,7 @@
     </url>
     @foreach ($posts as $post)
         <url>
-            <loc>{{ url($post->getUrl()) }}/</loc>
+            <loc>{{ url($post->url) }}/</loc>
             <changefreq>{{ config('setting.sitemap.blog_detail_changefreq') }}</changefreq>
             <priority>{{ config('setting.sitemap.blog_detail_priority') }}</priority>
         </url>
@@ -61,7 +61,7 @@
     </url>
     @foreach ($educations as $education)
         <url>
-            <loc>{{ url($education->getUrl()) }}/</loc>
+            <loc>{{ url($education->url) }}/</loc>
             <changefreq>{{ config('setting.sitemap.education_detail_changefreq') }}</changefreq>
             <priority>{{ config('setting.sitemap.education_detail_priority') }}</priority>
         </url>

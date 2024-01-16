@@ -1,13 +1,29 @@
 <div class="cookie" id="cookie-notification" style="display:none">
     <img src="{{ asset('assets/images/cookie.svg') }}" alt="cookie">
     <div class="title">
-        Web sitemizde çerezler kullanılmaktadır
+        {{ __('front/cookie.txt1') }}
     </div>
     <div class="description">
-        En iyi deneyimi yaşamanızı sağlamak için çerezler kullanıyoruz. Web sitemizi kullanarak <a href="#">Çerez
-            Politikamız</a>'ı kabul etmiş olursunuz. Çerezleri nasıl kullandığımız hakkında <a href="#">daha fazla
-            bilgi edinin</a>.
+        {!! __('front/cookie.txt2', [
+            'url' => route('page.show', [$pages['cookie_policy_page']->id, $pages['cookie_policy_page']->slug]),
+        ]) !!}
     </div>
-    <button class="cookie-btn" id="cookie-accept">Kabul Et</button>
-    <button class="cookie-btn" id="cookie-reject">Reddet</button>
+    <button class="cookie-btn" id="cookie-accept">{{ __('front/cookie.txt3') }}</button>
 </div>
+@section('script')
+    <script>
+        $(document).ready(function() {
+            if ($.cookie("cookie_notification") === undefined) {
+                $("#cookie-notification").show("slow");
+            }
+        });
+
+        $(document).on("click", "#cookie-accept", function() {
+            $.cookie("cookie_notification", "accepted", {
+                expires: 1,
+                path: "/"
+            });
+            $("#cookie-notification").hide("slow");
+        });
+    </script>
+@endsection

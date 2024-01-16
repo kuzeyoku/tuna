@@ -15,15 +15,15 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                     <div class="featured-imagebox featured-imagebox-services style1">
                         <div class="featured-thumbnail">
-                            <img class="img-fluid" src="{{ $product->getImageUrl() }}" alt="image" width="740"
+                            <img class="img-fluid" src="{{ $product->image_url }}" alt="image" width="740"
                                 height="500">
                         </div>
                         <div class="featured-content">
                             <div class="featured-title">
-                                <h3><a href="{{ $product->getUrl() }}">{{ $product->getTitle() }}</a></h3>
+                                <h3><a href="{{ $product->url }}">{{ $product->title }}</a></h3>
                             </div>
                             <div class="featured-desc">
-                                {{ $product->getShortDescription(100) }}
+                                {{ $product->short_description }}
                             </div>
                         </div>
                     </div>

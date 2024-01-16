@@ -10,27 +10,17 @@
                             <p>{{ config('setting.general.description') }}</p>
                         </div>
                         <div class="widget_social_wrapper social-icons pt-15">
-                            <h3 class="fs-18 mb-20">{{ __('front/footer.fallow_us') }}</h3>
+                            <h3 class="fs-18 mb-20">{{ __('front/footer.txt1') }}</h3>
                             <ul class="social-icons">
-                                @if (config('setting.social.facebook'))
-                                    <li><a href="{{ config('setting.social.facebook') }}" rel="noopener"
-                                            aria-label="facebook"><i class="icon-facebook"></i></a></li>
-                                @endif
-                                @if (config('setting.social.twitter'))
-                                    <li><a href="{{ config('setting.social.twitter') }}" rel="noopener"
-                                            aria-label="twitter"><i class="icon-twitter"></i></a></li>
-                                @endif
-                                @if (config('setting.social.instagram'))
-                                    <li><a href="{{ config('setting.social.instagram') }}" rel="noopener"
-                                            aria-label="instagram"><i class="icon-instagram"></i></a></li>
-                                @endif
-                                @if (config('setting.social.youtube'))
-                                    <li><a href="{{ config('setting.social.youtube') }}" rel="noopener"
-                                            aria-label="youtube"><i class="icon-youtube"></i></a></li>
-                                @endif
-                                @if (config('setting.social.linkedin'))
-                                    <li><a href="{{ config('setting.social.linkedin') }}" rel="noopener"
-                                            aria-label="linkedin"><i class="icon-linkedin"></i></a></li>
+                                @if (config('setting.social'))
+                                    @foreach (config('setting.social') as $key => $value)
+                                        <li>
+                                            <a href="{{ config('setting.social.' . $key) }}" rel="noopener"
+                                                aria-label="{{ $key }}">
+                                                <i class="icon-{{ $key }}"></i>
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 @endif
                             </ul>
                         </div>
@@ -39,10 +29,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 widget-area">
                     <div class="widget multi_widget clearfix">
                         <div class="widget_nav_menu clearfix">
-                            <h3 class="widget-title">{{ __('front/footer.pages') }}</h3>
+                            <h3 class="widget-title">{{ __('front/footer.txt2') }}</h3>
                             <ul class="menu-footer-quick-links links-1">
                                 @foreach ($pages as $page)
-                                    <li><a href="{{ $page->getUrl() }}">{{ $page->getTitle() }}</a></li>
+                                    <li><a href="{{ $page->url }}">{{ $page->title }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -51,10 +41,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 widget-area">
                     <div class="widget multi_widget clearfix">
                         <div class="newsletter_widget clearfix">
-                            <h3 class="widget-title">{{ __('front/footer.newsletter') }}</h3>
+                            <h3 class="widget-title">{{ __('front/footer.txt3') }}</h3>
                             {{ Form::open(['url' => route('newsletter.store'), 'class' => 'newsletter-form style1']) }}
                             <p>
-                                {{ Form::email('n_email', null, ['placeholder' => __('front/footer.newsletter_email_placeholder')]) }}
+                                {{ Form::email('n_email', null, ['placeholder' => __('front/footer.txt4')]) }}
                             </p>
                             @if ($errors->has('n_email'))
                                 <span class="text-danger">{{ $errors->first('n_email') }}</span>
@@ -66,7 +56,7 @@
                             </p>
                             <p class="cookies">
                                 {{ Form::checkbox('n_terms', true, false, ['id' => 'n_terms']) }}
-                                <label for="n_terms"></label>{{ __('front/footer.newsletter_terms_label') }}
+                                <label for="n_terms"></label>{{ __('front/footer.txt5') }}
                                 @if ($errors->has('n_terms'))
                                     <br>
                                     <span class="text-danger">{{ $errors->first('n_terms') }}</span>
@@ -104,20 +94,13 @@
                 <div class="col-lg-12">
                     <div class="cpy-text">
                         <ul class="footer-nav-menu">
-                            @if ($terms)
-                                <li><a href="{{ $terms->getUrl() }}">{{ $terms->getTitle() }}</a></li>
-                            @endif
-                            @if ($cookie)
-                                <li><a href="{{ $cookie->getUrl() }}">{{ $cookie->getTitle() }}</a></li>
-                            @endif
-                            @if ($privacy)
-                                <li><a href="{{ $privacy->getUrl() }}">{{ $privacy->getTitle() }}</a></li>
-                            @endif
-                            @if ($kvkk)
-                                <li><a href="{{ $kvkk->getUrl() }}">{{ $kvkk->getTitle() }}</a></li>
-                            @endif
+                            @foreach ($pages as $page)
+                                <li>
+                                    <a href="{{ $page->url }}">{{ $page->title }}</a>
+                                </li>
+                            @endforeach
                         </ul>
-                        <p>{!! __('front/footer.copyright', [
+                        <p>{!! __('front/footer.txt6', [
                             'year' => date('Y'),
                             'title' => config('setting.general.title'),
                             'url' => 'https://www.kuzeyoku.com.tr',

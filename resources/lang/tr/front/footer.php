@@ -1,12 +1,12 @@
 <?php
 
 return [
-    "newsletter" => "Bülten Aboneliği",
+    "txt1" => "Bizi Takip Edin",
+    "txt2" => "Kurumsal",
+    "txt3" => "Bülten Aboneliği",
+    "txt4" => "E-Posta Adresiniz",
+    "txt5" => "Kullanım Koşullarını Okudum ve Kabul Ediyorum",
+    "txt6" => 'Copyright © :year. :title - Bu site <a href=":url">:author</a> tarafından hazırlanmıştır.',
     "newsletter_email" => "E-Posta",
-    "newsletter_email_placeholder" => "E-Posta Adresiniz",
-    "newsletter_terms" => "Kullanım Koşulları",
-    "newsletter_terms_label" => "Kullanım Koşullarını Okudum ve Kabul Ediyorum",
-    "fallow_us" => "Bizi Takip Edin",
-    "pages" => "Kurumsal",
-    "copyright" => 'Copyright © :year. :title - Bu site <a href=":url">:author</a> tarafından hazırlanmıştır.',
+    "newsletter_terms" => "Kullanım Koşulları"
 ];

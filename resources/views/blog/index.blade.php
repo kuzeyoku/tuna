@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', __('front/blog.title'))
+@section('title', __('front/blog.txt1'))
 @section('content')
     @include('layout.breadcrumb')
     <div class="site-main bg-white">
@@ -11,24 +11,23 @@
                             <article class="post prt-blog-classic clearfix">
                                 <div class="prt-post-featured-wrapper prt-featured-wrapper">
                                     <div class="prt-post-featured">
-                                        <img width="350" height="240" class="img-fluid" src="{{ $post->getImageUrl() }}"
+                                        <img width="350" height="240" class="img-fluid" src="{{ $post->image_url }}"
                                             alt="blog-img">
                                     </div>
                                 </div>
                                 <div class="prt-blog-classic-content">
                                     <div class="prt-post-entry-header">
                                         <header class="entry-header">
-                                            <span class="blog-featured-tag">{{ $post->getCategoryTitle() }}</span>
-                                            <h2 class="entry-title"><a
-                                                    href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
+                                            <span class="blog-featured-tag">{{ $post->category_title }}</span>
+                                            <h2 class="entry-title"><a href="{{ $post->url }}">{{ $post->title }}</a>
                                             </h2>
-                                            <p>{{ $post->getShortDescription() }}</p>
+                                            <p>{{ $post->short_description }}</p>
                                         </header>
                                     </div>
                                     <div class="entry-content">
                                         <div class="prt-blogbox-footer-readmore">
                                             <a class="prt-btn btn-inline prt-icon-btn-right prt-btn-size-md btn-underline"
-                                                href="{{ $post->getUrl() }}">{{ __('front/blog.detail') }}</a>
+                                                href="{{ $post->url }}">{{ __('front/blog.txt2') }}</a>
                                             <span class="prt-meta-line date-link"><time class="entry-date published"
                                                     datetime="{{ $post->updated_at }}">{{ $post->updated_at->translatedFormat('d M Y') }}</time></span>
                                         </div>

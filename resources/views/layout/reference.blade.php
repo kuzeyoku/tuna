@@ -16,7 +16,7 @@
                                     <div class="prt-client-logo-tooltip-inner">
                                         <div class="client-thumbnail">
                                             <img width="171" height="32" class="img-fluid"
-                                                src="{{ $reference->getImageUrl() }}" alt="image">
+                                                src="{{ $reference->image_url }}" alt="image">
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', $service->getTitle())
+@section('title', $service->title)
 @section('content')
 @include("layout.breadcrumb", ["nav" => [route("service.index") => __("front/service.page_title")]])
 <div class="services-details-area default-padding">
@@ -13,7 +13,7 @@
                         <div class="content">
                             <ul>
                                 @foreach ($otherServices as $item)
-                                <li class="{{ $loop->first ? 'current-item' : '' }}"><a href="{{ route('service.show', [$item, $item->slug]) }}">{{ $item->getTitle() }}</a>
+                                <li class="{{ $loop->first ? 'current-item' : '' }}"><a href="{{ route('service.show', [$item, $item->slug]) }}">{{ $item->title }}</a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -39,9 +39,9 @@
                     </div> -->
                 </div>
                 <div class="col-lg-8 services-single-content">
-                    <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">
-                    <h2>{{ $service->getTitle() }}</h2>
-                    {!! trim($service->getDescription()) !!}
+                    <img src="{{ $service->image_url }}" alt="{{ $service->title }}">
+                    <h2>{{ $service->title }}</h2>
+                    {!! trim($service->description) !!}
                 </div>
             </div>
         </div>

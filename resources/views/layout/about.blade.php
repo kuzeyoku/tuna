@@ -4,10 +4,10 @@
             <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
                 <div class="section-title mb-0">
                     <div class="title-header">
-                        <h3>{{ __('front/about.title') }}</h3>
+                        <h3>{{ __('front/about.txt1') }}</h3>
                     </div>
                     <div class="title-desc">
-                        <p class="pb-0">{{ __('front/about.description') }}</p>
+                        <p class="pb-0">{{ __('front/about.txt2') }}</p>
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                 <div class="pl-30 res-1199-pl-0 res-1199-mt-30">
                     <div class="aboutquote">
                         <blockquote class="aboutquote-text">
-                            {{ __('front/about.blockquote') }}
+                            {{ __('front/about.txt3') }}
                         </blockquote>
                     </div>
                     <div class="about-section border-rad_10">

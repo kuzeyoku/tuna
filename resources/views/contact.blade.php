@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', __('front/contact.title'))
+@section('title', __('front/contact.txt1'))
 @section('content')
     <div class="site-main">
         <section class="prt-row bg-base-dark map-section overflow-hidden clearfix">
@@ -9,15 +9,15 @@
                         <div class="map-contact">
                             <div class="section-title">
                                 <div class="title-header pb-0">
-                                    <h2 class="title mb-15">{{ __('front/contact.title') }}</h2>
+                                    <h2 class="title mb-15">{{ __('front/contact.txt1') }}</h2>
                                 </div>
                                 <div class="title-desc">
-                                    <p>{{ __('front/contact.description') }}</p>
+                                    <p>{{ __('front/contact.txt2') }}</p>
                                 </div>
                             </div>
                             <div class="map-contect">
                                 <div class="copy-text mt-20 res-767-mt-0">
-                                    <p class="map-contact-link">{{ __('front/contact.call') }} <span id="p1"><a
+                                    <p class="map-contact-link">{{ __('front/contact.txt3') }} <span id="p1"><a
                                                 href="#"
                                                 class="text-base-skin">{{ config('setting.contact.phone') }}</a></span></p>
                                     <button class="copytext" onclick="copyToClipboard('#p1')"><i
@@ -53,32 +53,19 @@
                         <div class="pr-40 res-1199-pr-0">
                             <div class="section-title">
                                 <div class="title-header">
-                                    <h2 class="title">{{ __('front/contact.title') }}</h2>
+                                    <h2 class="title">{{ __('front/contact.txt1') }}</h2>
                                 </div>
                                 <div class="title-desc">
-                                    <p>{{ __('front/contact.description') }}</p>
+                                    <p>{{ __('front/contact.txt2') }}</p>
                                 </div>
                             </div>
                             <ul class="social-icons contact-link">
-                                @if (config('setting.social.facebook'))
-                                    <li class="mb-2"><a href="{{ config('setting.social.facebook') }}" rel="noopener"
-                                            aria-label="facebook"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                @endif
-                                @if (config('setting.social.twitter'))
-                                    <li class="mb-2"><a href="{{ config('setting.social.twitter') }}" rel="noopener"
-                                            aria-label="twitter"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                @endif
-                                @if (config('setting.social.instagram'))
-                                    <li class="mb-2"><a href="{{ config('setting.social.instagram') }}" rel="noopener"
-                                            aria-label="instagram"><i class="fa fa-instagram"></i>Instagram</a></li>
-                                @endif
-                                @if (config('setting.social.youtube'))
-                                    <li class="mb-2"><a href="{{ config('setting.social.youtube') }}" rel="noopener"
-                                            aria-label="youtube"><i class="fa fa-youtube"></i>Youtube</a></li>
-                                @endif
-                                @if (config('setting.social.linkedin'))
-                                    <li class="mb-2"><a href="{{ config('setting.social.linkedin') }}" rel="noopener"
-                                            aria-label="youtube"><i class="fa fa-linkedin"></i>Linkedin</a></li>
+                                @if (config('setting.social'))
+                                    @foreach (config('setting.social') as $key => $value)
+                                        <li class="mb-2"><a href="{{ config('setting.social.' . $key) }}" rel="noopener"
+                                                aria-label="{{ $key }}"><i
+                                                    class="fa fa-{{ $key }}"></i></a></li>
+                                    @endforeach
                                 @endif
                             </ul>
                         </div>
@@ -88,31 +75,31 @@
                             <div class="comment-respond">
                                 {{ Form::open(['url' => route('contact.send'), 'method' => 'POST', 'class' => 'comment-form']) }}
                                 <p>
-                                    {{ Form::text('name', null, ['placeholder' => __('front/contact.form_name')]) }}
+                                    {{ Form::text('name', null, ['placeholder' => __('front/contact.txt4')]) }}
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </p>
                                 <p>
-                                    {{ Form::email('email', null, ['placeholder' => __('front/contact.form_email')]) }}
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </p>
-                                <p>
-                                    {{ Form::text('phone', null, ['placeholder' => __('front/contact.form_phone')]) }}
+                                    {{ Form::text('phone', null, ['placeholder' => __('front/contact.txt5')]) }}
                                     @if ($errors->has('phone'))
                                         <span class="text-danger">{{ $errors->first('phone') }}</span>
                                     @endif
                                 </p>
                                 <p>
-                                    {{ Form::text('subject', null, ['placeholder' => __('front/contact.form_subject')]) }}
+                                    {{ Form::email('email', null, ['placeholder' => __('front/contact.txt6')]) }}
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                </p>
+                                <p>
+                                    {{ Form::text('subject', null, ['placeholder' => __('front/contact.txt7')]) }}
                                     @if ($errors->has('subject'))
                                         <span class="text-danger">{{ $errors->first('subject') }}</span>
                                     @endif
                                 </p>
                                 <p>
-                                    {{ Form::textarea('message', null, ['placeholder' => __('front/contact.form_message'), 'rows' => 5]) }}
+                                    {{ Form::textarea('message', null, ['placeholder' => __('front/contact.txt8'), 'rows' => 5]) }}
                                     @if ($errors->has('message'))
                                         <span class="text-danger">{{ $errors->first('message') }}</span>
                                     @endif
@@ -128,7 +115,7 @@
                                     @endif
                                 </p>
                                 <p>
-                                    {{ Form::submit(__('front/contact.form_send'), [
+                                    {{ Form::submit(__('front/contact.txt9'), [
                                         'class' =>
                                             'g-recaptcha submit prt-btn prt-btn-size-md prt-btn-shape-round prt-btn-style-fill prt-btn-color-skincolor mr-25 res-575-mb-10',
                                         'data-sitekey' => config('setting.recaptcha.site_key'),
@@ -143,6 +130,5 @@
                 </div>
             </div>
         </section>
-
     </div>
 @endsection

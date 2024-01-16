@@ -29,6 +29,21 @@ class Category extends Model
         $this->locale = session()->get("locale");
     }
 
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
+    }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order", "asc");
+    }
+
+    public function translate()
+    {
+        return $this->hasMany(CategoryTranslate::class);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);
@@ -49,68 +64,24 @@ class Category extends Model
         return $this->hasMany(Blog::class);
     }
 
-    public function translate()
-    {
-        return $this->hasMany(CategoryTranslate::class);
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->whereStatus(StatusEnum::Active->value);
-    }
-
-    public function scopeOrder($query)
-    {
-        return $query->orderBy("order", "asc");
-    }
-
     public function getTitleAttribute()
+    {
+        return $this->translate->where("lang", $this->locale)->pluck('title')->first();
+    }
+
+    public function getTitlesAttribute()
     {
         return $this->translate->pluck("title", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
+        return $this->translate->where("lang", $this->locale)->pluck('description')->first();
+    }
+
+    public function getDescriptionsAttribute()
+    {
         return $this->translate->pluck("description", "lang")->all();
-    }
-
-    public function getTitle()
-    {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
-    }
-
-    public function getDescription()
-    {
-        if (array_key_exists($this->locale, $this->description))
-            return $this->description[$this->locale];
-        return null;
-    }
-
-    public function countProducts()
-    {
-        return $this->products()->count();
-    }
-
-    public function countProjects()
-    {
-        return $this->projects()->count();
-    }
-
-    public function countServices()
-    {
-        return $this->services()->count();
-    }
-
-    public function countBlogs()
-    {
-        return $this->blogs()->count();
-    }
-
-    public function getUrl(ModuleEnum $module)
-    {
-        return route($module->route() . ".category", [$this->id, $this->slug]);
     }
 
     public static function boot()

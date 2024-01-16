@@ -1,9 +1,9 @@
 @if($popup)
 <div id="modal">
     @if($popup->type == "image")
-    <a href="{{ $popup->url }}"><img class="w-100 img-fluid" src="{{ $popup->getImageUrl() }}" alt="{{ $popup->getTitle() }}"></a>
+    <a href="{{ $popup->url }}"><img class="w-100 img-fluid" src="{{ $popup->image_url }}" alt="{{ $popup->title }}"></a>
     @elseif($popup->type == "text")
-    {!! $popup->getDescription() !!}
+    {!! $popup->description !!}
     @endif
 </div>
 @section("script")
@@ -12,7 +12,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#modal").iziModal({
-            title: '{{ $popup->getTitle() }}',
+            title: '{{ $popup->title }}',
             background: '{{ $popup->color }}',
             closeOnEscape: "{{ $popup->closeOnEscape }}" == 1 ? true : false,
             closeButton: "{{ $popup->closeButton }}" == 1 ? true : false,
@@ -33,7 +33,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#modal").iziModal({
-            title: '{{ $popup->getTitle() }}',
+            title: '{{ $popup->title }}',
             background: '{{ $popup->color }}',
             closeOnEscape: "{{ $popup->closeOnEscape }}" == 1 ? true : false,
             closeButton: "{{ $popup->closeButton }}" == 1 ? true : false,

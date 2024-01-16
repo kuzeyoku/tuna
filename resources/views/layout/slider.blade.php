@@ -3,10 +3,10 @@
     <rs-module id="rev_slider_1_1" style="" data-version="6.5.9">
         @foreach ($slider as $slider)
             <rs-slides>
-                <rs-slide data-key="rs-1" data-title="Slide" data-thumb="{{ $slider->getImageUrl() }}"
+                <rs-slide data-key="rs-1" data-title="Slide" data-thumb="{{ $slider->image_url }}"
                     data-anim="ei:d;eo:d;s:d;r:0;t:fade;sl:d;">
 
-                    <img src="{{ $slider->getImageUrl() }}" title="slider-img-02.jpg" width="1920" height="630"
+                    <img src="{{ $slider->image_url }}" title="slider-img-02.jpg" width="1920" height="630"
                         class="rev-slidebg tp-rs-img" data-no-retina>
 
                     <rs-layer id="slider-1-slide-4-layer-0" data-type="text" data-rsp_ch="on"
@@ -14,7 +14,7 @@
                         data-text="w:normal;s:16;l:26,26,26,20;fw:400;" data-vbility="t,t,f,f" data-frame_0="y:-100%;"
                         data-frame_0_mask="u:t;" data-frame_1="st:190;sp:1200;sR:190;" data-frame_1_mask="u:t;"
                         data-frame_999="o:0;st:w;sR:7610;"
-                        style="z-index:8;font-family:'Krona One', sans-serif;">{{ $slider->getTitle() }}
+                        style="z-index:8;font-family:'Krona One', sans-serif;">{{ $slider->title }}
                     </rs-layer>
 
                     <rs-layer id="slider-1-slide-4-layer-1" class="rs-selectable" data-type="shape" data-rsp_ch="on"
@@ -31,10 +31,10 @@
                         data-text="w:normal;s:50,50,58,30;l:116,116,80,60;fw:400;" data-frame_0="y:-100%;"
                         data-frame_0_mask="u:t;" data-frame_1="st:310;sp:1200;sR:310;" data-frame_1_mask="u:t;"
                         data-frame_999="o:0;st:w;sR:7490;"
-                        style="z-index:7;font-family:'Krona One', sans-serif;">{{ $slider->getDescription() }}
+                        style="z-index:7;font-family:'Krona One', sans-serif;">{{ $slider->description }}
                     </rs-layer>
 
-                    <a id="slider-1-slide-4-layer-5" class="rs-layer rs-selectable" href="contact-us.html"
+                    <a id="slider-1-slide-4-layer-5" class="rs-layer rs-selectable" href="{{ route('contact.index') }}"
                         data-type="text" data-rsp_ch="on"
                         data-xy="x:c,c,c,c;xo:-290px,-290px,0,0;yo:390px,420px,313px,205px;"
                         data-text="w:normal;s:12,12,12,12;l:22,22,22,22;fw:400;"
@@ -43,8 +43,7 @@
                         data-vbility="t,t,t,t" data-frame_0="y:-100%;"
                         data-frame_1="e:power4.inOut;st:1050;sp:500;sR:1050;" data-frame_999="o:0;st:w;sR:7450;"
                         data-frame_hover="c:#fff;bgc:#e33b28;bos:solid;boc:#e33b28;bow:2px,2px,2px,2px;bor:10px,10px,10px,10px;"
-                        style="z-index:12; font-family:'Krona One', sans-serif; text-transform: uppercase;">Contact
-                        Us
+                        style="z-index:12; font-family:'Krona One', sans-serif; text-transform: uppercase;">{{ __('front/contact.txt1') }}
                     </a>
                 </rs-slide>
             </rs-slides>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,15 +30,6 @@ class Service extends Model
         $this->locale = session()->get("locale");
     }
 
-    public function translate()
-    {
-        return $this->hasMany(ServiceTranslate::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     public function scopeActive($query)
     {
@@ -49,44 +41,55 @@ class Service extends Model
         return $query->orderBy("order");
     }
 
+    public function translate()
+    {
+        return $this->hasMany(ServiceTranslate::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function getTitlesAttribute()
+    {
+        return $this->translate->pluck("title", "lang")->all();
+    }
+
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("title")->first();
+    }
+
+    public function getDescriptionsAttribute()
+    {
+        return $this->translate->pluck("description", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck("description")->first();
     }
 
-    public function getTitle()
+    public function getShortDescriptionAttribute()
     {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
+        return Str::limit(strip_tags($this->description), 100);
     }
 
-    public function getDescription()
-    {
-        if (array_key_exists($this->locale, $this->description))
-            return $this->description[$this->locale];
-        return null;
-    }
-
-    public function getUrl()
+    public function getUrlAttribute()
     {
         return route(ModuleEnum::Service->route() . ".show", [$this, $this->slug]);
     }
 
-    public function getImageUrl()
+    public function getImageUrlAttribute()
     {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
-        return asset("assets/img/noimage.png");
+        if (is_null($this->image))
+            return asset("assets/img/noimage.png");
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
     }
 
-    public static function getOther(int $id, int $limit)
+    public function getOtherAttribute()
     {
-        return Service::active()->where("id", "!=", $id)->limit($limit)->get();
+        return Service::active()->where("id", "!=", $this->id)->limit(5)->get();
     }
 }

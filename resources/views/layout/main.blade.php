@@ -60,9 +60,9 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.cookie.js') }}"></script>
-    <script src="{{ asset('assets/js/cookie.js') }}"></script>
-    @yield('script')
     <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
+    @include('layout.cookie_alert')
+    @yield('script')
     @include('layout.alert')
     <script>
         AOS.init({

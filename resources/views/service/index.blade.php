@@ -9,8 +9,8 @@
                     @foreach ($service as $service)
                         <div class="single-item col-lg-3 col-md-6">
                             <div class="item">
-                                <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">
-                                <h5><a class="text-nowrap" href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a>
+                                <img src="{{ $service->image_url }}" alt="{{ $service->title }}">
+                                <h5><a class="text-nowrap" href="{{ $service->url }}">{{ $service->title }}</a>
                                 </h5>
                                 <p>
                                     {!! Str::limit($service->getDescription(true), 90, '...') !!}

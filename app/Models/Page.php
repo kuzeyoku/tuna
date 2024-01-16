@@ -26,47 +26,43 @@ class Page extends Model
         $this->locale = session()->get("locale");
     }
 
-    public function translate()
-    {
-        return $this->hasMany(PageTranslate::class);
-    }
-
     public function scopeActive($query)
     {
         return $query->whereStatus(StatusEnum::Active->value);
     }
 
+    public function translate()
+    {
+        return $this->hasMany(PageTranslate::class);
+    }
+
+    public function getTitlesAttribute()
+    {
+        return $this->translate->pluck("title", "lang")->all();
+    }
+
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck('title')->first();
+    }
+
+    public function getDescriptionsAttribute()
+    {
+        return $this->translate->pluck("description", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->where("lang", $this->locale)->pluck('description')->first();
     }
 
-    public function getTitle()
+    public function getUrlAttribute()
     {
-        if (array_key_exists($this->locale, $this->title))
-            return $this->title[$this->locale];
-        return null;
-    }
-
-    public function getDescription()
-    {
-        if (array_key_exists($this->locale, $this->description))
-            return $this->description[$this->locale];
-        return null;
+        return route(ModuleEnum::Page->route() . ".show", [$this->id, $this->slug]);
     }
 
     public static function toSelectArray()
     {
-        return Page::active()->get()->pluck("title." . app()->getLocale(), "id")->toArray();
-    }
-
-    public function getUrl()
-    {
-        return route(ModuleEnum::Page->route() . ".show", [$this->id, $this->slug]);
+        return self::active()->get()->pluck("title", "id")->all();
     }
 }
