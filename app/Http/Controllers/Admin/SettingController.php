@@ -35,7 +35,7 @@ class SettingController extends Controller
         $this->authorize("update", Setting::class);
         try {
             $this->service->update($request);
-            LogController::Logger("info", __("admin/{$this->service->folder()}.update_log", ["category" => __("admin/setting.category." . $request->category)]));
+            LogController::Logger("info", __("admin/{$this->service->folder()}.update_log", ["category" => __("admin/setting.category_" . $request->category)]));
             return back()
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
         } catch (Throwable $e) {

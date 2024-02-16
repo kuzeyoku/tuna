@@ -6,7 +6,7 @@
                     <h1><a class="home-link" href="{{ route('home') }}" title="{{ config('setting.general.title') }}"
                             rel="home">
                             <img id="logo-img" height="45" width="224" class="img-fluid auto_size"
-                                src="{{ asset('assets/images/logo-light.svg') }}" alt="logo-img">
+                                src="{{ asset('assets/images/logo-light.png') }}" alt="logo-img">
                         </a></h1>
                 </div>
                 <div class="top_bar_contact_item with-icon top_bar_address ms-auto">
@@ -59,7 +59,7 @@
                         <a class="home-link" href="{{ route('home') }}" title="{{ config('setting.general.title') }}"
                             rel="home">
                             <img id="logo-imgs" height="45" width="224" class="img-fluid auto_size"
-                                src="{{ asset('assets/images/logo-light.svg') }}" alt="logo-img">
+                                src="{{ asset('assets/images/logo-light.png') }}" alt="logo-img">
                         </a>
                     </div>
                     <div class="">
