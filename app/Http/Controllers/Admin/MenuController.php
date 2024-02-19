@@ -87,7 +87,7 @@ class MenuController extends Controller
     {
         try {
             $this->service->delete($menu);
-            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $menu->title[app()->getLocale()]]));
+            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $menu->titles[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.$menu->type")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
