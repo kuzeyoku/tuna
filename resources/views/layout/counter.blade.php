@@ -36,7 +36,7 @@
                                             data-interval="100" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
                                             class="numinate">{{ __('front/counter.txt4') }}</span>
-                                        <span></span>
+                                        <span>+</span>
                                     </h4>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                             data-interval="2" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
                                             class="numinate">{{ __('front/counter.txt7') }}</span>
-                                        <span>K</span>
+                                        <span>+</span>
                                     </h4>
                                 </div>
                             </div>
