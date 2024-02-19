@@ -13,7 +13,7 @@
                             <div class="prt-fid inside style1">
                                 <div class="prt-fid-contents">
                                     <h4 class="prt-fid-inner">
-                                        <span data-appear-animation="animateDigits" data-from="0" data-to="125"
+                                        <span data-appear-animation="animateDigits" data-from="0" data-to="{{ __('front/counter.txt1') }}"
                                             data-interval="50" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
                                             class="numinate">{{ __('front/counter.txt1') }}</span>
@@ -32,7 +32,7 @@
                             <div class="prt-fid inside style1">
                                 <div class="prt-fid-contents">
                                     <h4 class="prt-fid-inner">
-                                        <span data-appear-animation="animateDigits" data-from="0" data-to="1020"
+                                        <span data-appear-animation="animateDigits" data-from="0" data-to="{{ __('front/counter.txt4') }}"
                                             data-interval="100" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
                                             class="numinate">{{ __('front/counter.txt4') }}</span>
@@ -53,7 +53,7 @@
                             <div class="prt-fid inside style1">
                                 <div class="prt-fid-contents">
                                     <h4 class="prt-fid-inner">
-                                        <span data-appear-animation="animateDigits" data-from="0" data-to="10"
+                                        <span data-appear-animation="animateDigits" data-from="0" data-to="{{ __('front/counter.txt7') }}"
                                             data-interval="2" data-before="" data-before-style="sup" data-after=""
                                             data-after-style="sub"
                                             class="numinate">{{ __('front/counter.txt7') }}</span>
