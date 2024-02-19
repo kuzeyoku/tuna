@@ -36,11 +36,11 @@ class UpdateSliderRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title.*" => __("admin/{$this->folder}_form.title"),
-            "description.*" => __("admin/{$this->folder}_form.description"),
-            "image" => __("admin/{$this->folder}_form.image"),
-            "button" => __("admin/{$this->folder}_form.button"),
-            "video" => __("admin/{$this->folder}_form.video"),
+            "title.*" => __("admin/{$this->folder}.form_title"),
+            "description.*" => __("admin/{$this->folder}.form_description"),
+            "image" => __("admin/{$this->folder}.form_image"),
+            "button" => __("admin/{$this->folder}.form_button"),
+            "video" => __("admin/{$this->folder}.form_video"),
             "status" => __("admin/general.status"),
             "order" => __("admin/general.order"),
         ];
