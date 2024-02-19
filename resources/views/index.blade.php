@@ -7,7 +7,7 @@
 
         @include('layout.about')
 
-        @include('layout.product')
+        {{-- @include('layout.product') --}}
 
         @include('layout.counter')
 
