@@ -90,7 +90,7 @@ class MenuService extends BaseService
         $pages = Cache::remember("pages_menu_list", config("setting.caching.time", 3600), function () {
             $pages = Page::active()->get();
             foreach ($pages as $page) {
-                $data[$page->getUrl()] = $page->getTitle();
+                $data[$page->url] = $page->title;
             }
             return $data ?? [];
         });
@@ -104,6 +104,6 @@ class MenuService extends BaseService
             // route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
             route("contact.index") => __("front/contact.txt1"),
             "Sayfalar" => $pages ?? [],
-        ];  
+        ];
     }
 }
