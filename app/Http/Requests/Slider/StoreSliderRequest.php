@@ -35,11 +35,11 @@ class StoreSliderRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title.*" => __("admin/{$this->folder}.form.title"),
-            "description.*" => __("admin/{$this->folder}.form.description"),
-            "image" => __("admin/{$this->folder}.form.image"),
-            "button" => __("admin/{$this->folder}.form.button"),
-            "video" => __("admin/{$this->folder}.form.video"),
+            "title.*" => __("admin/{$this->folder}_form_title"),
+            "description.*" => __("admin/{$this->folder}_form_description"),
+            "image" => __("admin/{$this->folder}_form_image"),
+            "button" => __("admin/{$this->folder}_form_button"),
+            "video" => __("admin/{$this->folder}_form_video"),
             "status" => __("admin/general.status"),
             "order" => __("admin/general.order"),
         ];
