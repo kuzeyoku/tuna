@@ -114,6 +114,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="item5">
+                        <div class="tooltip">
+                            <div class="map-dots"></div>
+                            <div class="tooltiptext">
+                                <p class="tooltip-title">{{ __('front/counter.txt17') }}</p>
+                                <h3>{{ __('front/counter.txt18') }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item6">
+                        <div class="tooltip">
+                            <div class="map-dots"></div>
+                            <div class="tooltiptext">
+                                <p class="tooltip-title">{{ __('front/counter.txt19') }}</p>
+                                <h3>{{ __('front/counter.txt20') }}</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
