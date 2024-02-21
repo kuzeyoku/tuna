@@ -9,7 +9,7 @@
                         <div class="textwidget widget-text">
                             <p>{{ config('setting.general.description') }}</p>
                         </div>
-                        <div class="widget_social_wrapper social-icons pt-15">
+                        {{-- <div class="widget_social_wrapper social-icons pt-15">
                             <h3 class="fs-18 mb-20">{{ __('front/footer.txt1') }}</h3>
                             <ul class="social-icons">
                                 @if (config('setting.social'))
@@ -23,7 +23,7 @@
                                     @endforeach
                                 @endif
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 widget-area">
