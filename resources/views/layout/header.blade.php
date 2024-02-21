@@ -13,12 +13,12 @@
                     <div class="top_bar_icon"><i class="fa fa-thumb-tack"></i></div>
                     <span>{{ config('setting.contact.address') }}</span>
                 </div>
-                <div class="top_bar_contact_item with-icon top_bar_call">
+                {{-- <div class="top_bar_contact_item with-icon top_bar_call">
                     <div class="top_bar_icon"><i class="fa fa-phone"></i></div>
                     <span>Call Us:</span><span class="topbar_icon-txt"><a class="text-base-skin"
                             href="tel:{{ config('setting.contact.phone') }}">
                             {{ config('setting.contact.phone') }}</a></span>
-                </div>
+                </div> --}}
                 <div class="top_bar_contact_item top_bar_social">
                     <ul class="social-icons">
                         @if (config('setting.social.facebook'))
