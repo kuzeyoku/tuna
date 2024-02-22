@@ -49,6 +49,13 @@ if (ModuleEnum::Product->status()) {
     });
 }
 
+if (ModuleEnum::Galery->status()) {
+    Route::controller(App\Http\Controllers\GaleryController::class)->prefix("galery")->group(function () {
+        Route::get("/", "index")->name("galery.index");
+        Route::get("/{galery}/{slug}", "show")->name("galery.show");
+    });
+}
+
 // Route::get("/reference", [App\Http\Controllers\ReferenceController::class, "index"])->name("reference.index");
 
 //Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

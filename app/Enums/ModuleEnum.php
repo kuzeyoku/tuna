@@ -5,6 +5,7 @@ namespace App\Enums;
 enum ModuleEnum: string
 {
     case Message = "message";
+    case Galery = "galery";
     case Menu = "menu";
     case Page = 'page';
     case Language = 'language';
@@ -25,6 +26,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => true,
             self::Message => true,
+            self::Galery => true,
             self::Menu => true,
             self::Page => true,
             self::Language => true,
@@ -56,6 +58,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => "fas-user",
             self::Message => "fas-envelope-open-text",
+            self::Galery => "fas-images",
             self::Menu => "fas-bars",
             self::Page => 'fas-pager',
             self::Language => 'fas-language',
@@ -77,6 +80,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => "user",
             self::Message => "message",
+            self::Galery => "galery",
             self::Menu => "menu",
             self::Page => 'page',
             self::Language => 'language',
@@ -98,6 +102,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => "user",
             self::Message => "message",
+            self::Galery => "galery",
             self::Menu => "menu",
             self::Page => 'page',
             self::Language => "language",
@@ -119,6 +124,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => \App\Http\Controllers\Admin\UserController::class,
             self::Message => \App\Http\Controllers\Admin\MessageController::class,
+            self::Galery => \App\Http\Controllers\Admin\GaleryController::class,
             self::Menu => \App\Http\Controllers\Admin\MenuController::class,
             self::Page => \App\Http\Controllers\Admin\PageController::class,
             self::Language => \App\Http\Controllers\Admin\LanguageController::class,
@@ -140,6 +146,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => \App\Models\User::class,
             self::Message => \App\Models\Message::class,
+            self::Galery => \App\Models\Galery::class,
             self::Menu => \App\Models\Menu::class,
             self::Page => \App\Models\Page::class,
             self::Language => \App\Models\Language::class,
@@ -162,6 +169,10 @@ enum ModuleEnum: string
 
             self::Message => [
                 "index" => __("admin/$this->value.index"),
+            ],
+            self::Galery => [
+                "create" => __("admin/$this->value.create"),
+                "index" => __("admin/$this->value.list"),
             ],
             self::User => [
                 "create" => __("admin/$this->value.create"),
@@ -240,6 +251,7 @@ enum ModuleEnum: string
             self::Brand => ["image" => ["width" => 150, "height" => 150]],
             self::Reference => ["image" => ["width" => 400, "height" => 400]],
             self::Product => ["image" => ["width" => 1080, "height" => 400]],
+            self::Galery => ["image" => ["width" => 1280, "height" => 720]],
             self::Project => ["image" => ["width" => 1920, "height" => 1080]],
             self::Slider => ["image" => ["width" => 1920, "height" => 1080]],
             self::Testimonial => ["image" => ["width" => 300, "height" => 300]],

@@ -39,17 +39,17 @@ class StoreProductRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
-            "title.*" => __("admin/{$this->folder}.form.title"),
-            "description.*" => __("admin/{$this->folder}.form.description"),
-            "features.*" => __("admin/{$this->folder}.form.features"),
-            "price" => __("admin/{$this->folder}.form.price"),
-            "currency" => __("admin/{$this->folder}.form.currency"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form_title"),
+            "title.*" => __("admin/{$this->folder}.form_title"),
+            "description.*" => __("admin/{$this->folder}.form_description"),
+            "features.*" => __("admin/{$this->folder}.form_features"),
+            "price" => __("admin/{$this->folder}.form_price"),
+            "currency" => __("admin/{$this->folder}.form_currency"),
             "order" => __("admin/general.order"),
             "status" => __("admin/general.status"),
-            "category_id" => __("admin/{$this->folder}.form.category"),
-            "image" => __("admin/{$this->folder}.form.image"),
-            "video" => __("admin/{$this->folder}.form.video")
+            "category_id" => __("admin/{$this->folder}.form_category"),
+            "image" => __("admin/{$this->folder}.form_image"),
+            "video" => __("admin/{$this->folder}.form_video")
         ];
     }
 }
