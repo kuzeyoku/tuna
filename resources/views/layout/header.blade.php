@@ -15,9 +15,11 @@
                 </div>
 
                 <div class="top_bar_contact_item with-icon top_bar_call">
-                    {{ Form::select('lang', $languageList, 'default', ['class' => 'form-control d-inline']) }}
+                    {{ Form::open(['url' => route('locale.set'), 'method' => 'post']) }}
+                    {{ Form::select('locale', $languageList, app()->getLocale(), ['class' => 'form-control d-inline', 'onchange' => 'this.form.submit()']) }}
+                    {{ Form::close() }}
                 </div>
-                <div class="top_bar_contact_item top_bar_social">
+                {{-- <div class="top_bar_contact_item top_bar_social">
                     <ul class="social-icons">
                         @if (config('setting.social.facebook'))
                             <li class="prt-social-facebook"><a href="{{ config('setting.social.facebook') }}"
@@ -45,7 +47,7 @@
                             </li>
                         @endif
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
