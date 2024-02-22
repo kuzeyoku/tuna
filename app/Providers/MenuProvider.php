@@ -49,7 +49,7 @@ class MenuProvider extends ServiceProvider
             $view->with(compact("headerMenu"));
         });
 
-        view()->composer("layout.topbar", function ($view) use ($cache, $cacheTime) {
+        view()->composer("layout.header", function ($view) use ($cache, $cacheTime) {
             $languageList = $cache->remember("frontLanguageList", $cacheTime, function () {
                 $language = new \App\Models\Language();
                 return $language->active()->pluck("title", "code");

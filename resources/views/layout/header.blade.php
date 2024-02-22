@@ -13,12 +13,10 @@
                     <div class="top_bar_icon"><i class="fa fa-thumb-tack"></i></div>
                     <span>{{ config('setting.contact.address') }}</span>
                 </div>
-                {{-- <div class="top_bar_contact_item with-icon top_bar_call">
-                    <div class="top_bar_icon"><i class="fa fa-phone"></i></div>
-                    <span>Call Us:</span><span class="topbar_icon-txt"><a class="text-base-skin"
-                            href="tel:{{ config('setting.contact.phone') }}">
-                            {{ config('setting.contact.phone') }}</a></span>
-                </div> --}}
+
+                <div class="top_bar_contact_item with-icon top_bar_call">
+                    {{ Form::select('lang', $languageList, 'default', ['class' => 'form-control d-inline']) }}
+                </div>
                 <div class="top_bar_contact_item top_bar_social">
                     <ul class="social-icons">
                         @if (config('setting.social.facebook'))
@@ -88,7 +86,7 @@
                             <div class="header_extra">
                                 <div class="header_btn">
                                     <a class="prt-btn prt-btn-size-md prt-btn-shape-round prt-btn-style-fill prt-btn-color-skincolor"
-                                        href="{{ route('contact.index') }}">İletişim</a>
+                                        href="{{ route('contact.index') }}">@lang('front/contact.txt1')</a>
                                 </div>
                             </div>
                         </div>
