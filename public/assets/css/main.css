@@ -2811,7 +2811,7 @@ nav.main-menu ul {
     font-family: var(--base-headingfont);
 }
 
-#site-header-menu .site-navigation ul.menu>li>a:after {
+/* #site-header-menu .site-navigation ul.menu>li>a:after {
     position: absolute;
     content: "\f107";
     font-family: "FontAwesome";
@@ -2819,7 +2819,7 @@ nav.main-menu ul {
     margin-left: 4px;
     margin-top: 0px;
     font-weight: normal;
-}
+} */
 
 #site-header-menu .prt-stickable-header .site-navigation ul.menu>li.active>a {
     color: var(--base-skin) !important;

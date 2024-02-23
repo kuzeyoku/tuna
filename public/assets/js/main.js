@@ -99,9 +99,13 @@ jQuery(function ($) {
     });
 
     $menuTrigger.on("click", function (e) {
-        e.preventDefault();
         var t = $(this);
-        t.toggleClass("active").next("ul").toggleClass("active");
+        if (t.next("ul").length) { // eğer alt menü varsa
+            e.preventDefault();
+            t.toggleClass("active").next("ul").toggleClass("active");
+        } else { // eğer alt menü yoksa
+            window.location.href = t.attr("href");
+        }
     });
 
     $("ul li:has(ul)");
